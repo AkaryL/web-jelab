@@ -6,6 +6,9 @@ desktop.ini
 # Vercel
 .vercel
 
+# Preview local (no se despliega)
+_preview-server.js
+
 # Editores
 .vscode/
 .idea/
