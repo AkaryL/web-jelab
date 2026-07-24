@@ -4,7 +4,8 @@ Landing de una sola página para **JELAB Pharma** (Minoxidil + Vitamina D3).
 Sitio estático provisional mientras se desarrolla el sitio definitivo.
 
 ## Contenido
-- `index.html` — la página completa (imágenes incrustadas en base64, sin dependencias externas).
+- `index.html` — la página completa (HTML + CSS, sin dependencias externas).
+- `assets/` — imágenes (logo, botes 5MG/1MG, resultados). Se cargan como archivos, no incrustadas.
 
 ## Despliegue
 Sitio 100% estático. En Vercel se detecta solo (sin configuración):
