@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F5F0E7">
+<title>Tienda — JELAB Pharma · Minoxidil + Vitamina D3</title>
+<meta name="description" content="Compra Minoxidil + Vitamina D3 de JELAB Pharma. Menudeo, suscripción o mayoreo. Envío a todo México.">
+<link rel="icon" href="favicon.png">
+<style>
+  :root{
+    --bg:#F5F0E7;--bg-2:#EFE7D8;--surface:#FFFFFF;--tint-v:#F1EBFB;--tint-m:#FBEAF4;
+    --ink:#211B2B;--ink-2:#6B6376;--violet:#6C34D4;--violet-bright:#8A5CF0;--magenta:#C0248A;
+    --line:#E6DECE;--line-2:#EFEADF;--ok:#1F9D63;
+    --shadow:0 24px 60px -30px rgba(60,40,100,.4);--shadow-sm:0 12px 30px -18px rgba(60,40,100,.34);
+    --grad:linear-gradient(120deg,#6C34D4 0%,#9A3FC8 55%,#C0248A 120%);
+    --display:"Arial Black","Arial Bold",Arial,system-ui,sans-serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --edge:clamp(18px,4vw,56px);--maxw:1120px;
+  }
+  @media (prefers-color-scheme:dark){:root{
+    --bg:#161318;--bg-2:#1D1922;--surface:#231F2B;--tint-v:#241C33;--tint-m:#2A1E2A;
+    --ink:#F2ECE2;--ink-2:#ADA3B7;--violet:#9A6DF5;--violet-bright:#B594F8;--magenta:#E45CB0;
+    --line:#322C3B;--line-2:#2A2531;--ok:#54C98C;
+    --shadow:0 24px 60px -30px rgba(0,0,0,.7);--shadow-sm:0 12px 30px -18px rgba(0,0,0,.6);}}
+  :root[data-theme="light"]{--bg:#F5F0E7;--bg-2:#EFE7D8;--surface:#FFFFFF;--tint-v:#F1EBFB;--tint-m:#FBEAF4;
+    --ink:#211B2B;--ink-2:#6B6376;--violet:#6C34D4;--violet-bright:#8A5CF0;--magenta:#C0248A;
+    --line:#E6DECE;--line-2:#EFEADF;--ok:#1F9D63;}
+  :root[data-theme="dark"]{--bg:#161318;--bg-2:#1D1922;--surface:#231F2B;--tint-v:#241C33;--tint-m:#2A1E2A;
+    --ink:#F2ECE2;--ink-2:#ADA3B7;--violet:#9A6DF5;--violet-bright:#B594F8;--magenta:#E45CB0;
+    --line:#322C3B;--line-2:#2A2531;--ok:#54C98C;}
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;
+    -webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--display);font-weight:900;letter-spacing:-.02em;line-height:1.05;margin:0;text-wrap:balance}
+  p{margin:0}a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--edge)}
+  .tnum{font-variant-numeric:tabular-nums}
+  .logo-img{height:28px;width:auto}
+  @media (prefers-color-scheme:dark){.logo-img{filter:brightness(0) invert(1)}}
+  :root[data-theme="light"] .logo-img{filter:none}
+  :root[data-theme="dark"] .logo-img{filter:brightness(0) invert(1)}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-weight:700;font-size:.98rem;
+    font-family:var(--sans);padding:.8rem 1.3rem;border-radius:999px;border:2px solid transparent;cursor:pointer;
+    transition:transform .15s ease,background .15s ease,filter .15s ease}
+  .btn:focus-visible{outline:3px solid var(--violet-bright);outline-offset:3px}
+  .btn-primary{background:var(--violet);color:#fff}
+  .btn-primary:hover{transform:translateY(-2px);background:var(--violet-bright)}
+  .btn-grad{background:var(--grad);color:#fff}
+  .btn-grad:hover{transform:translateY(-2px);filter:brightness(1.05)}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--violet);color:var(--violet)}
+  .btn-wa{background:var(--magenta);color:#fff}.btn-wa:hover{transform:translateY(-2px);filter:brightness(1.06)}
+  .btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+  .btn.block{width:100%}
+
+  /* demo banner */
+  .demo-bar{background:var(--grad);color:#fff;font-size:.85rem;font-weight:600;text-align:center;
+    padding:.55rem 1rem;display:flex;gap:.6rem;align-items:center;justify-content:center;flex-wrap:wrap}
+  .demo-bar b{font-weight:800}
+  .demo-bar button{background:rgba(255,255,255,.2);border:0;color:#fff;border-radius:999px;
+    width:22px;height:22px;cursor:pointer;font-weight:800;line-height:1}
+
+  /* header */
+  header.site{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 88%,transparent);
+    backdrop-filter:saturate(1.2) blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.7rem}
+  .nav .back{font-weight:600;color:var(--ink-2);font-size:.9rem}
+  .nav .back:hover{color:var(--violet)}
+  .cart-btn{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:999px;
+    padding:.5rem .9rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:.5rem;color:var(--ink)}
+  .cart-btn .count{background:var(--magenta);color:#fff;border-radius:999px;min-width:20px;height:20px;
+    font-size:.72rem;display:grid;place-items:center;padding:0 5px}
+
+  /* hero tienda */
+  .shop-head{padding-block:clamp(28px,4vw,44px)}
+  .shop-head .eyebrow{font-weight:700;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--magenta)}
+  .shop-head h1{font-size:clamp(2rem,4.6vw,3rem);margin-top:.4rem}
+  .shop-head p{color:var(--ink-2);margin-top:.6rem;max-width:52ch}
+
+  /* catálogo */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,3vw,24px);padding-bottom:clamp(40px,6vw,72px)}
+  @media (max-width:760px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:22px;overflow:hidden;
+    box-shadow:var(--shadow-sm);display:flex;flex-direction:column}
+  .card .top{display:grid;grid-template-columns:150px 1fr;gap:1rem;padding:1.4rem}
+  @media (max-width:460px){.card .top{grid-template-columns:1fr;justify-items:center;text-align:center}}
+  .card .pic{border-radius:16px;padding:.6rem;display:grid;place-items:center}
+  .card.alta .pic{background:var(--tint-v)}.card.inicial .pic{background:var(--tint-m)}
+  .card .pic img{height:180px;width:auto;object-fit:contain;filter:drop-shadow(0 14px 18px rgba(60,40,100,.22))}
+  .card .tag{display:inline-block;font-weight:800;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;
+    padding:.26rem .55rem;border-radius:999px;margin-bottom:.5rem;color:#fff}
+  .card.alta .tag{background:var(--violet)}.card.inicial .tag{background:var(--magenta)}
+  .card h3{font-family:var(--sans);font-weight:900;font-size:1.25rem}
+  .card .dose{color:var(--ink-2);font-size:.88rem;margin-top:.15rem}
+  .card .price{display:flex;align-items:baseline;gap:.4rem;margin-top:.7rem}
+  .card .price .big{font-family:var(--display);font-weight:900;font-size:1.55rem}
+  .card .price .per{font-size:.82rem;color:var(--ink-2)}
+  .card .buy{border-top:1px solid var(--line-2);padding:1.1rem 1.4rem 1.4rem;display:flex;flex-direction:column;gap:.8rem}
+  .modes{display:flex;gap:.4rem;background:var(--bg-2);border-radius:12px;padding:.3rem}
+  .modes label{flex:1;text-align:center;font-size:.82rem;font-weight:700;padding:.5rem .3rem;border-radius:9px;
+    cursor:pointer;color:var(--ink-2)}
+  .modes input{position:absolute;opacity:0;pointer-events:none}
+  .modes input:checked + span{color:var(--ink)}
+  .modes label:has(input:checked){background:var(--surface);box-shadow:var(--shadow-sm);color:var(--ink)}
+  .modes small{display:block;font-weight:600;font-size:.66rem;color:var(--violet)}
+  .buy-row{display:flex;gap:.7rem;align-items:center}
+  .stepper{display:flex;align-items:center;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+  .stepper button{width:38px;height:40px;border:0;background:var(--surface);color:var(--ink);font-size:1.2rem;
+    cursor:pointer;font-weight:700}
+  .stepper button:hover{background:var(--bg-2)}
+  .stepper input{width:40px;height:40px;border:0;text-align:center;background:var(--surface);color:var(--ink);
+    font-weight:800;font-size:1rem;-moz-appearance:textfield}
+  .stepper input::-webkit-outer-spin-button,.stepper input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+  .mayoreo-note{font-size:.8rem;color:var(--ink-2)}
+
+  /* cart drawer */
+  .overlay{position:fixed;inset:0;background:rgba(20,12,30,.5);opacity:0;visibility:hidden;
+    transition:opacity .25s ease,visibility .25s ease;z-index:50}
+  .overlay.open{opacity:1;visibility:visible}
+  .drawer{position:fixed;top:0;right:0;height:100%;width:min(420px,92vw);background:var(--bg);
+    box-shadow:-20px 0 60px -30px rgba(0,0,0,.5);transform:translateX(100%);transition:transform .3s ease;
+    z-index:51;display:flex;flex-direction:column}
+  .drawer.open{transform:none}
+  .drawer h2{font-family:var(--sans);font-weight:900;font-size:1.2rem}
+  .drawer .dh{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.3rem;
+    border-bottom:1px solid var(--line)}
+  .drawer .close{background:var(--surface);border:1px solid var(--line);border-radius:999px;width:34px;height:34px;
+    cursor:pointer;font-size:1.1rem;color:var(--ink)}
+  .drawer .items{flex:1;overflow-y:auto;padding:1rem 1.3rem;display:flex;flex-direction:column;gap:1rem}
+  .empty{text-align:center;color:var(--ink-2);margin:auto;padding:2rem 1rem}
+  .li{display:grid;grid-template-columns:56px 1fr auto;gap:.8rem;align-items:center}
+  .li .thumb{background:var(--tint-v);border-radius:10px;padding:.2rem;display:grid;place-items:center}
+  .li .thumb img{height:52px;width:auto}
+  .li .name{font-weight:800;font-size:.9rem}
+  .li .meta{font-size:.76rem;color:var(--ink-2)}
+  .li .mini{display:flex;align-items:center;gap:.4rem;margin-top:.35rem}
+  .li .mini button{width:26px;height:26px;border:1px solid var(--line);background:var(--surface);border-radius:7px;
+    cursor:pointer;color:var(--ink);font-weight:700}
+  .li .mini span{min-width:20px;text-align:center;font-weight:800;font-size:.85rem}
+  .li .lt{font-weight:800;font-size:.92rem}
+  .li .rm{display:block;margin-top:.3rem;font-size:.72rem;color:var(--magenta);cursor:pointer;background:none;border:0;padding:0}
+  .drawer .foot{border-top:1px solid var(--line);padding:1.1rem 1.3rem;display:flex;flex-direction:column;gap:.8rem}
+  .sumrow{display:flex;justify-content:space-between;font-size:.9rem;color:var(--ink-2)}
+  .sumrow.total{font-size:1.05rem;color:var(--ink);font-weight:800}
+  .sumrow.total .tnum{font-family:var(--display)}
+  .save-note{font-size:.78rem;color:var(--ok);font-weight:700}
+
+  /* checkout / confirmación (vistas) */
+  .view{display:none}
+  .view.active{display:block}
+  .checkout{padding-block:clamp(24px,4vw,44px)}
+  .co-grid{display:grid;grid-template-columns:1.3fr .9fr;gap:clamp(20px,3vw,36px);align-items:start}
+  @media (max-width:820px){.co-grid{grid-template-columns:1fr}}
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:1.6rem;box-shadow:var(--shadow-sm)}
+  .panel h3{font-family:var(--sans);font-weight:900;font-size:1.1rem;margin-bottom:1rem}
+  .field{display:flex;flex-direction:column;gap:.35rem;margin-bottom:.9rem}
+  .field label{font-size:.82rem;font-weight:700;color:var(--ink-2)}
+  .field input{border:1px solid var(--line);border-radius:10px;padding:.7rem .85rem;background:var(--bg);
+    color:var(--ink);font-size:.95rem;font-family:var(--sans)}
+  .field input:focus{outline:2px solid var(--violet-bright);outline-offset:1px;border-color:transparent}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+  @media (max-width:480px){.row2{grid-template-columns:1fr}}
+  .check-inline{display:flex;gap:.6rem;align-items:flex-start;font-size:.88rem;color:var(--ink-2);margin-top:.4rem}
+  .check-inline input{margin-top:.2rem}
+  .summary .sl{display:flex;justify-content:space-between;gap:1rem;padding:.5rem 0;border-bottom:1px dashed var(--line-2);font-size:.9rem}
+  .summary .sl:last-of-type{border-bottom:0}
+  .secure{display:flex;gap:.5rem;align-items:center;font-size:.8rem;color:var(--ink-2);margin-top:.8rem;justify-content:center}
+  .secure svg{color:var(--ok)}
+  .confirm{max-width:560px;margin:0 auto;text-align:center;padding-block:clamp(40px,7vw,88px)}
+  .confirm .badge{width:76px;height:76px;border-radius:50%;background:color-mix(in srgb,var(--ok) 18%,transparent);
+    color:var(--ok);display:grid;place-items:center;margin:0 auto 1.2rem}
+  .confirm h2{font-size:1.9rem}
+  .confirm p{color:var(--ink-2);margin-top:.8rem}
+  .demo-inline{background:var(--tint-v);border:1px dashed var(--violet);border-radius:12px;padding:.9rem 1rem;
+    font-size:.85rem;color:var(--ink);margin-top:1.4rem;text-align:left}
+
+  footer.site{border-top:1px solid var(--line);padding-block:1.6rem;color:var(--ink-2);font-size:.82rem;text-align:center;margin-top:2rem}
+</style>
+</head>
+<body>
+
+<div class="demo-bar" id="demoBar">
+  <span><b>Tienda en modo demostración</b> — los pagos se conectarán a Shopify. Precios de ejemplo.</span>
+  <button aria-label="Cerrar aviso" onclick="document.getElementById('demoBar').remove()">×</button>
+</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="back" href="index.html">← Volver al inicio</a>
+    <a href="index.html" aria-label="JELAB Pharma"><img class="logo-img" src="assets/img03.png" alt="JELAB Laboratorios"></a>
+    <button class="cart-btn" id="cartBtn" aria-label="Abrir carrito">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+      Carrito <span class="count" id="cartCount">0</span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <!-- ================= VISTA: CATÁLOGO ================= -->
+  <section class="view active" id="viewShop">
+    <div class="wrap shop-head">
+      <span class="eyebrow">Tienda JELAB</span>
+      <h1>Minoxidil + Vitamina D3</h1>
+      <p>Elige tu concentración y modalidad. Menudeo, suscripción con descuento, o mayoreo para barberías, clínicas y dermatólogos.</p>
+    </div>
+    <div class="wrap grid" id="catalog"><!-- se llena por JS --></div>
+  </section>
+
+  <!-- ================= VISTA: CHECKOUT ================= -->
+  <section class="view" id="viewCheckout">
+    <div class="wrap checkout">
+      <a class="back" href="#" onclick="Store.go('shop');return false" style="display:inline-block;margin-bottom:1rem;color:var(--ink-2)">← Seguir comprando</a>
+      <h1 style="font-family:var(--display);font-size:clamp(1.7rem,4vw,2.4rem);margin-bottom:1.2rem">Finalizar compra</h1>
+      <form class="co-grid" id="coForm" onsubmit="Store.pay(event)">
+        <div class="panel">
+          <h3>Datos de envío</h3>
+          <div class="row2">
+            <div class="field"><label>Nombre</label><input required name="nombre" autocomplete="given-name"></div>
+            <div class="field"><label>Apellidos</label><input required name="apellidos" autocomplete="family-name"></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label>Correo</label><input required type="email" name="email" autocomplete="email"></div>
+            <div class="field"><label>WhatsApp</label><input required name="tel" inputmode="tel" autocomplete="tel"></div>
+          </div>
+          <div class="field"><label>Calle y número</label><input required name="calle" autocomplete="address-line1"></div>
+          <div class="row2">
+            <div class="field"><label>Colonia</label><input required name="colonia"></div>
+            <div class="field"><label>Código postal</label><input required name="cp" inputmode="numeric" autocomplete="postal-code"></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label>Ciudad</label><input required name="ciudad" autocomplete="address-level2"></div>
+            <div class="field"><label>Estado</label><input required name="estado" autocomplete="address-level1"></div>
+          </div>
+          <label class="check-inline"><input type="checkbox" name="factura"> Requiero factura (CFDI). Te pediremos tus datos fiscales por WhatsApp.</label>
+        </div>
+        <div class="panel summary">
+          <h3>Tu pedido</h3>
+          <div id="coItems"></div>
+          <div class="sl" style="border-top:1px solid var(--line);margin-top:.6rem;padding-top:.7rem"><span>Subtotal</span><b id="coSubtotal" class="tnum">$0</b></div>
+          <div class="sl"><span>Envío</span><span style="color:var(--ink-2)">Por calcular</span></div>
+          <div class="sl" style="font-size:1.1rem;color:var(--ink)"><b>Total</b><b id="coTotal" class="tnum" style="font-family:var(--display)">$0</b></div>
+          <button class="btn btn-grad block" type="submit" style="margin-top:1rem">Pagar de forma segura</button>
+          <div class="secure">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Pago protegido — procesado por Shopify
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ================= VISTA: CONFIRMACIÓN (demo) ================= -->
+  <section class="view" id="viewDone">
+    <div class="wrap confirm">
+      <div class="badge"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <h2>¡Tu pedido está listo!</h2>
+      <p id="doneMsg">Gracias por tu compra. Te enviaremos la confirmación y el seguimiento de tu envío.</p>
+      <div class="demo-inline">
+        <b>Nota (modo demo):</b> en producción, este botón lleva al <b>checkout seguro de Shopify</b>, donde el cliente paga con tarjeta, OXXO o SPEI y recibe su confirmación por correo automáticamente. Aquí no se procesó ningún cobro.
+      </div>
+      <div style="display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:1.6rem">
+        <a class="btn btn-ghost" href="index.html">Volver al inicio</a>
+        <button class="btn btn-primary" onclick="Store.go('shop')">Seguir comprando</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- OVERLAY + DRAWER -->
+<div class="overlay" id="overlay" onclick="Store.closeCart()"></div>
+<aside class="drawer" id="drawer" aria-label="Carrito de compra">
+  <div class="dh"><h2>Tu carrito</h2><button class="close" id="closeCart" aria-label="Cerrar">×</button></div>
+  <div class="items" id="cartItems"></div>
+  <div class="foot" id="cartFoot" hidden>
+    <div class="sumrow"><span>Subtotal</span><b class="tnum" id="cartSubtotal">$0</b></div>
+    <div class="save-note" id="cartSave" hidden></div>
+    <button class="btn btn-grad block" id="goCheckout">Finalizar compra</button>
+    <button class="btn btn-ghost block" id="keepShopping">Seguir comprando</button>
+  </div>
+</aside>
+
+<footer class="site">
+  <div class="wrap">JELAB Pharma — Este producto es un medicamento. Consulta a tu médico. Precios de ejemplo. © jelabpharma.com</div>
+</footer>
+
+<script>
+/* =================================================================
+   CONFIG SHOPIFY  →  cuando te pasen las APIs, se pega AQUÍ y ya.
+   Mientras estos campos estén vacíos, la tienda corre en modo DEMO.
+   ================================================================= */
+const SHOPIFY = {
+  DOMAIN: "",            // ej: "jelab-pharma.myshopify.com"
+  STOREFRONT_TOKEN: "",  // Storefront API access token (público)
+  // ID de variante de Shopify por producto (se llena al crear productos):
+  variants: { min5: "", min1: "" }
+};
+const DEMO = !SHOPIFY.DOMAIN || !SHOPIFY.STOREFRONT_TOKEN;
+
+/* Catálogo. En producción esto lo trae la Storefront API; por ahora es mock.
+   *** PRECIOS DE EJEMPLO — reemplazar por los reales *** */
+const PRODUCTS = {
+  min5: { id:"min5", cls:"alta",    tag:"Concentración alta",    title:"Minoxidil 5 MG",
+          dose:"+ Vitamina D3 2000 UI · 60 cápsulas", price:999, img:"assets/img04.png" },
+  min1: { id:"min1", cls:"inicial", tag:"Concentración inicial", title:"Minoxidil 1 MG",
+          dose:"+ Vitamina D3 2000 UI · 60 cápsulas", price:899, img:"assets/img06.png" }
+};
+const SUB_DISCOUNT = 0.10; // suscripción: -10%
+const WA = "https://wa.me/523317389938?text=";
+
+const money = n => "$" + n.toLocaleString("es-MX");
+
+const Store = {
+  cart: JSON.parse(localStorage.getItem("jelab_cart") || "[]"),
+
+  save(){ localStorage.setItem("jelab_cart", JSON.stringify(this.cart)); this.render(); },
+
+  keyOf(id, mode){ return id + "|" + mode; },
+
+  add(id, qty, mode){
+    qty = Math.max(1, qty|0);
+    const k = this.keyOf(id, mode);
+    const found = this.cart.find(l => this.keyOf(l.id, l.mode) === k);
+    if(found) found.qty += qty; else this.cart.push({ id, mode, qty });
+    this.save(); this.openCart();
+  },
+  setQty(id, mode, delta){
+    const l = this.cart.find(x => x.id===id && x.mode===mode);
+    if(!l) return;
+    l.qty += delta;
+    if(l.qty < 1) this.cart = this.cart.filter(x => !(x.id===id && x.mode===mode));
+    this.save();
+  },
+  remove(id, mode){ this.cart = this.cart.filter(x => !(x.id===id && x.mode===mode)); this.save(); },
+
+  unitPrice(l){ const p = PRODUCTS[l.id].price; return l.mode==="sub" ? Math.round(p*(1-SUB_DISCOUNT)) : p; },
+  subtotal(){ return this.cart.reduce((s,l)=> s + this.unitPrice(l)*l.qty, 0); },
+  saved(){ return this.cart.reduce((s,l)=> s + (l.mode==="sub" ? (PRODUCTS[l.id].price - this.unitPrice(l))*l.qty : 0), 0); },
+  count(){ return this.cart.reduce((s,l)=> s + l.qty, 0); },
+  modeLabel(m){ return m==="sub" ? "Suscripción mensual (−10%)" : "Compra única"; },
+
+  openCart(){ document.getElementById("overlay").classList.add("open");
+    document.getElementById("drawer").classList.add("open"); },
+  closeCart(){ document.getElementById("overlay").classList.remove("open");
+    document.getElementById("drawer").classList.remove("open"); },
+
+  go(view){
+    document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
+    document.getElementById(view==="checkout"?"viewCheckout":view==="done"?"viewDone":"viewShop").classList.add("active");
+    this.closeCart(); window.scrollTo({top:0,behavior:"smooth"});
+    if(view==="checkout") this.renderCheckout();
+  },
+
+  /* ====== PAGO ======
+     DEMO: muestra confirmación.
+     PRODUCCIÓN: con el token de Shopify, aquí se crea el checkout y se redirige
+     al checkout seguro de Shopify (Buy SDK / Storefront API). Ver README. */
+  pay(e){
+    e.preventDefault();
+    if(DEMO){ this.go("done"); this.cart=[]; this.save(); return; }
+    // --- PRODUCCIÓN (se activa solo cuando SHOPIFY.* está lleno) ---
+    // const items = this.cart.map(l => ({ id: SHOPIFY.variants[l.id], qty: l.qty }));
+    // window.location = buildShopifyCheckoutUrl(items);   // -> checkout de Shopify
+  },
+
+  renderCatalog(){
+    document.getElementById("catalog").innerHTML = Object.values(PRODUCTS).map(p => `
+      <article class="card ${p.cls}">
+        <div class="top">
+          <div class="pic"><img src="${p.img}" alt="${p.title} de JELAB Pharma"></div>
+          <div>
+            <span class="tag">${p.tag}</span>
+            <h3>${p.title}</h3>
+            <p class="dose">${p.dose}</p>
+            <div class="price"><span class="big tnum">${money(p.price)}*</span><span class="per">/ 60 cáps.</span></div>
+          </div>
+        </div>
+        <div class="buy">
+          <div class="modes" role="radiogroup" aria-label="Modalidad ${p.title}">
+            <label><input type="radio" name="mode-${p.id}" value="unico" checked><span>Compra única<small>&nbsp;</small></span></label>
+            <label><input type="radio" name="mode-${p.id}" value="sub"><span>Suscripción<small>−10% al mes</small></span></label>
+            <label><input type="radio" name="mode-${p.id}" value="mayoreo"><span>Mayoreo<small>barberías/clínicas</small></span></label>
+          </div>
+          <div class="buy-row" data-buyrow="${p.id}">
+            <div class="stepper">
+              <button type="button" aria-label="Menos" onclick="Store.step('${p.id}',-1)">−</button>
+              <input id="qty-${p.id}" type="number" min="1" value="1" aria-label="Cantidad">
+              <button type="button" aria-label="Más" onclick="Store.step('${p.id}',1)">+</button>
+            </div>
+            <button class="btn btn-primary" style="flex:1" onclick="Store.addFromCard('${p.id}')">Agregar</button>
+          </div>
+          <p class="mayoreo-note" data-note="${p.id}" hidden>Para mayoreo cotizamos por WhatsApp según volumen. <a href="#" onclick="Store.mayoreo('${p.id}');return false" style="color:var(--violet);font-weight:700">Cotizar →</a></p>
+        </div>
+      </article>`).join("");
+
+    // toggle mayoreo UI
+    Object.keys(PRODUCTS).forEach(id=>{
+      document.querySelectorAll(`input[name="mode-${id}"]`).forEach(r=>{
+        r.addEventListener("change", ()=>{
+          const may = r.value==="mayoreo" && r.checked;
+          document.querySelector(`[data-buyrow="${id}"]`).style.display = may ? "none":"flex";
+          document.querySelector(`[data-note="${id}"]`).hidden = !may;
+        });
+      });
+    });
+  },
+  step(id, d){ const i=document.getElementById("qty-"+id); i.value = Math.max(1,(parseInt(i.value)||1)+d); },
+  selectedMode(id){ const r=document.querySelector(`input[name="mode-${id}"]:checked`); return r?r.value:"unico"; },
+  addFromCard(id){
+    const qty = parseInt(document.getElementById("qty-"+id).value)||1;
+    this.add(id, qty, this.selectedMode(id)==="sub" ? "sub" : "unico");
+  },
+  mayoreo(id){ window.open(WA + encodeURIComponent(`Hola, quiero cotización de MAYOREO de ${PRODUCTS[id].title} de JELAB.`), "_blank"); },
+
+  render(){
+    document.getElementById("cartCount").textContent = this.count();
+    const box = document.getElementById("cartItems");
+    const foot = document.getElementById("cartFoot");
+    if(!this.cart.length){
+      box.innerHTML = `<div class="empty">Tu carrito está vacío.<br>Agrega un producto para empezar.</div>`;
+      foot.hidden = true; return;
+    }
+    foot.hidden = false;
+    box.innerHTML = this.cart.map(l=>{
+      const p = PRODUCTS[l.id];
+      return `<div class="li">
+        <div class="thumb"><img src="${p.img}" alt=""></div>
+        <div>
+          <div class="name">${p.title}</div>
+          <div class="meta">${this.modeLabel(l.mode)}</div>
+          <div class="mini">
+            <button aria-label="Menos" onclick="Store.setQty('${l.id}','${l.mode}',-1)">−</button>
+            <span>${l.qty}</span>
+            <button aria-label="Más" onclick="Store.setQty('${l.id}','${l.mode}',1)">+</button>
+          </div>
+        </div>
+        <div style="text-align:right">
+          <div class="lt tnum">${money(this.unitPrice(l)*l.qty)}</div>
+          <button class="rm" onclick="Store.remove('${l.id}','${l.mode}')">Quitar</button>
+        </div>
+      </div>`;
+    }).join("");
+    document.getElementById("cartSubtotal").textContent = money(this.subtotal());
+    const save = this.saved();
+    const sv = document.getElementById("cartSave");
+    if(save>0){ sv.hidden=false; sv.textContent = `Ahorras ${money(save)} con suscripción`; } else sv.hidden=true;
+  },
+
+  renderCheckout(){
+    document.getElementById("coItems").innerHTML = this.cart.map(l=>{
+      const p=PRODUCTS[l.id];
+      return `<div class="sl"><span>${p.title} · ${this.modeLabel(l.mode)} × ${l.qty}</span><b class="tnum">${money(this.unitPrice(l)*l.qty)}</b></div>`;
+    }).join("");
+    document.getElementById("coSubtotal").textContent = money(this.subtotal());
+    document.getElementById("coTotal").textContent = money(this.subtotal());
+  },
+
+  init(){
+    this.renderCatalog(); this.render();
+    document.getElementById("cartBtn").onclick = ()=>this.openCart();
+    document.getElementById("closeCart").onclick = ()=>this.closeCart();
+    document.getElementById("keepShopping").onclick = ()=>this.closeCart();
+    document.getElementById("goCheckout").onclick = ()=>{ if(this.cart.length) this.go("checkout"); };
+    // permite abrir la tienda directo en checkout con #checkout (para demo)
+  }
+};
+Store.init();
+</script>
+</body>
+</html>
