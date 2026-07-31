@@ -81,7 +81,6 @@
 
   /* estado transparente (arriba, sobre la imagen): todo en blanco */
   .brand img{transition:filter .3s ease}
-  header.site:not(.scrolled) .brand img{filter:brightness(0) invert(1)}
   header.site:not(.scrolled) .nav-links a{color:rgba(255,255,255,.92)}
   header.site:not(.scrolled) .nav-links a:hover{color:#fff}
   header.site:not(.scrolled) .cart-btn{background:rgba(255,255,255,.12);
@@ -142,7 +141,7 @@
   /* ====================== SECCIONES ====================== */
   section.pad{padding-block:clamp(32px,4.5vw,58px)}
   .sec-head{text-align:center;max-width:44ch;margin:0 auto clamp(20px,3vw,32px)}
-  .sec-head h2{font-size:clamp(1.9rem,4.4vw,3rem);margin-top:.5rem}
+  .sec-head h2{font-size:clamp(2.3rem,5.2vw,3.7rem);margin-top:.5rem}
   .sec-head p{margin-top:.9rem;color:var(--ink-2)}
 
   /* beneficios */
@@ -282,6 +281,10 @@
   .faq summary::after{content:"+";font-family:var(--display);font-size:1.35rem;color:var(--plum);line-height:1}
   .faq details[open] summary::after{content:"\2013"}
   .faq details p{padding:0 0 1.1rem;color:var(--ink-2);font-size:.95rem;margin:0;max-width:64ch}
+  .faq details p:last-child{padding-bottom:1.1rem}
+  .faq details ul{margin:.1rem 0 1.1rem;padding-left:1.15rem;color:var(--ink-2);font-size:.95rem;
+    display:flex;flex-direction:column;gap:.3rem;max-width:64ch}
+  .faq details .q-sub{font-weight:800;color:var(--ink);margin:.5rem 0 .25rem;font-size:.96rem}
 
   /* ====================== BOTÓN FLOTANTE WHATSAPP (minimalista · verde) ====================== */
   .wa-float{position:fixed;right:22px;bottom:22px;z-index:70;display:inline-flex;align-items:center;
@@ -382,7 +385,7 @@
         <span class="kicker">Minoxidil + Vitamina D3 · <b>Vía oral</b></span>
         <h1>Recupera tu <span class="hl">cabello</span></h1>
         <div class="hero-checks">
-          <span><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Resultados visibles en 3–6 meses con uso constante</span>
+          <span><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Resultados visibles a partir de 90 días con uso constante</span>
           <span><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Con respaldo y seguimiento médico</span>
           <span><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Fórmula magistral hecha en México</span>
         </div>
@@ -451,7 +454,7 @@
       <div class="tl-item t1">
         <span class="tl-when">2–8 semanas</span>
         <h3>Renovación del ciclo</h3>
-        <p>Es normal una caída temporal del cabello al inicio. Esto indica que el ciclo capilar se está renovando.</p>
+        <p>Es normal una caída temporal del cabello al inicio (“shedding”). Esto indica que el ciclo capilar se está renovando, haciendo que algunos cabellos en fase de reposo se caigan antes para dar paso a nuevos.</p>
       </div>
       <div class="tl-item t2">
         <span class="tl-when">2–4 meses</span>
@@ -486,9 +489,10 @@
           <h3>Minoxidil 5 MG</h3>
           <p class="dose">+ Vitamina D3 2000 UI · 60 cápsulas</p>
           <ul>
-            <li>Ideal para caída avanzada o androgenética marcada</li>
-            <li>Máximo estímulo del crecimiento capilar</li>
-            <li>Una toma al día</li>
+            <li>Máxima concentración para caída avanzada</li>
+            <li>Favorece mayor densidad y grosor capilar</li>
+            <li>1 cápsula al día (de preferencia antes de dormir)</li>
+            <li>2 meses de tratamiento</li>
           </ul>
           <div class="price"><span class="big tnum">$850*</span><span class="per">/ 60 cáps.</span></div>
           <button class="btn btn-primary add-cart" data-id="5mg" data-name="Minoxidil 5 MG" data-price="850" data-img="assets/img04.png">Agregar al carrito</button>
@@ -501,9 +505,10 @@
           <h3>Minoxidil 1 MG</h3>
           <p class="dose">+ Vitamina D3 2000 UI · 60 cápsulas</p>
           <ul>
-            <li>Ideal para iniciar tratamiento o caída ligera</li>
-            <li>Fortalece y mejora la densidad gradualmente</li>
-            <li>Una toma al día</li>
+            <li>Ideal para personas con mayor sensibilidad al minoxidil (recomendado en mujeres)</li>
+            <li>Fortalece y mejora la densidad progresivamente</li>
+            <li>1 cápsula al día (de preferencia antes de dormir)</li>
+            <li>2 meses de tratamiento</li>
           </ul>
           <div class="price"><span class="big tnum">$750*</span><span class="per">/ 60 cáps.</span></div>
           <button class="btn btn-primary add-cart" data-id="1mg" data-name="Minoxidil 1 MG" data-price="750" data-img="assets/img06.png">Agregar al carrito</button>
@@ -534,28 +539,79 @@
     </div>
     <div class="faq reveal">
       <details open>
-        <summary>¿En cuánto tiempo veo resultados?</summary>
-        <p>Con una toma diaria y uso constante, la mayoría nota mejoría entre los 3 y 6 meses. La disminución de la caída suele percibirse en las primeras semanas.</p>
+        <summary>¿Cuándo empezaré a ver resultados?</summary>
+        <p>Cada persona responde de forma diferente, pero la mayoría comienza a notar una disminución en la caída del cabello durante las primeras 6 a 8 semanas (“shedding”). Esto indica que el ciclo capilar se está renovando. Los cambios visibles en densidad y crecimiento suelen observarse entre los 3 y 6 meses de uso constante. Para obtener los mejores resultados, es importante tomar una cápsula todos los días.</p>
       </details>
       <details>
-        <summary>¿Cuál concentración me toca, 1 MG o 5 MG?</summary>
-        <p>El 1 MG es ideal para iniciar tratamiento o caída ligera; el 5 MG para caída avanzada o androgenética marcada. Tu médico te ayuda a elegir, y también te orientamos por WhatsApp.</p>
+        <summary>¿Qué concentración es adecuada para mí: 1 MG o 5 MG?</summary>
+        <p class="q-sub">Minoxidil 1 MG</p>
+        <ul>
+          <li>Ideal para caída leve o pérdida de densidad inicial.</li>
+          <li>También puede utilizarse en personas más sensibles al Minoxidil.</li>
+          <li>Concentración recomendada en mujeres.</li>
+        </ul>
+        <p class="q-sub">Minoxidil 5 MG</p>
+        <ul>
+          <li>Recomendado para alopecia androgenética moderada o avanzada.</li>
+          <li>Diseñado para quienes buscan una mayor estimulación del crecimiento capilar.</li>
+        </ul>
+        <p>Si tienes dudas, nuestro equipo puede orientarte y tu médico determinará la concentración más adecuada para tu caso.</p>
       </details>
       <details>
-        <summary>¿Cómo se toma?</summary>
-        <p>Una sola cápsula al día por vía oral. Sin aplicaciones tópicas ni rutinas complicadas: lo importante es la constancia.</p>
+        <summary>¿Cómo debo tomarlo?</summary>
+        <p>Toma una cápsula al día, preferentemente antes de dormir. Puede ingerirse con o sin alimentos y debe acompañarse con un vaso de agua. La constancia es el factor más importante para obtener resultados.</p>
+      </details>
+      <details>
+        <summary>¿Por qué tomarlo antes de dormir?</summary>
+        <p>La razón principal es mejorar la tolerancia al medicamento y reducir la percepción de algunos efectos secundarios.</p>
+      </details>
+      <details>
+        <summary>¿Siempre debe tomarse por la noche?</summary>
+        <p>No necesariamente.</p>
+        <ul>
+          <li>Si no presentas mareos ni otros efectos secundarios, puedes tomarlo por la mañana o por la noche.</li>
+          <li>Algunas personas incluso prefieren tomarlo con la cena para evitar olvidos.</li>
+          <li>Lo importante es tomarlo aproximadamente a la misma hora todos los días.</li>
+        </ul>
+      </details>
+      <details>
+        <summary>¿Debo suspender el tratamiento cuando vea resultados?</summary>
+        <p>No. El Minoxidil ayuda a mantener el crecimiento del cabello mientras se utiliza de forma continua. Si el tratamiento se suspende, es posible que con el tiempo el cabello vuelva gradualmente a su estado previo. Cualquier cambio en la dosis o suspensión debe realizarse bajo indicación médica.</p>
       </details>
       <details>
         <summary>¿Es seguro? ¿Tiene efectos secundarios?</summary>
-        <p>Es un medicamento y su uso debe ser bajo indicación médica. Antes de iniciar, consulta a tu médico sobre tu caso y posibles efectos. Damos seguimiento durante el tratamiento.</p>
+        <p>El Minoxidil oral es un medicamento que debe utilizarse bajo supervisión médica. La mayoría de las personas lo tolera adecuadamente, aunque algunas pueden presentar efectos secundarios como:</p>
+        <ul>
+          <li>Crecimiento de vello en otras zonas del cuerpo.</li>
+          <li>Ligera disminución de la presión arterial.</li>
+          <li>Palpitaciones o aumento de la frecuencia cardiaca.</li>
+          <li>Hinchazón por retención de líquidos (poco frecuente).</li>
+        </ul>
+        <p>Suspende y consulta a tu médico si presentas efectos secundarios graves.</p>
       </details>
       <details>
-        <summary>¿Puedo suspenderlo?</summary>
-        <p>El efecto se mantiene con el uso continuo; suspenderlo puede revertir el avance con el tiempo. Consulta a tu médico antes de hacer cambios.</p>
+        <summary>¿Quiénes no deben tomar Minoxidil oral?</summary>
+        <p>Este tratamiento no está recomendado para:</p>
+        <ul>
+          <li>Mujeres embarazadas o en periodo de lactancia.</li>
+          <li>Personas con alergia al Minoxidil.</li>
+          <li>Pacientes con ciertas enfermedades cardiovasculares o presión arterial baja sin valoración médica.</li>
+        </ul>
+        <p>Si padeces alguna enfermedad o tomas otros medicamentos, consulta primero a tu médico.</p>
       </details>
       <details>
-        <summary>¿Cómo lo compro y me llega?</summary>
-        <p>Escríbenos por WhatsApp y coordinamos tu pedido y envío. Muy pronto también podrás comprarlo en línea desde esta misma página.</p>
+        <summary>¿Cómo puedo realizar mi compra?</summary>
+        <p>Puedes hacer tu pedido de forma rápida por WhatsApp. Nuestro equipo resolverá tus dudas, confirmará tu pedido y coordinará el envío hasta tu domicilio. También puedes comprar directamente desde nuestra tienda en línea.</p>
+      </details>
+      <details>
+        <summary>¿Por qué elegir JELAB?</summary>
+        <ul>
+          <li>Fórmula con Minoxidil + Vitamina D3 2000 UI.</li>
+          <li>Fabricado bajo altos estándares de calidad.</li>
+          <li>Presentación de 60 cápsulas (2 meses de tratamiento).</li>
+          <li>Máxima calidad, sin pagar de más.</li>
+          <li>Atención personalizada antes y durante el tratamiento.</li>
+        </ul>
       </details>
     </div>
   </section>
@@ -584,7 +640,8 @@
       <div class="foot-links">
         <div class="foot-col">
           <h4>Producto</h4>
-          <a href="#beneficios">Beneficios</a>
+          <a href="#formula">Fórmula</a>
+          <a href="#esperar">Qué esperar</a>
           <a href="#presentaciones">Presentaciones</a>
           <a href="#resultados">Resultados</a>
         </div>
@@ -592,6 +649,7 @@
           <h4>Contacto</h4>
           <a href="https://wa.me/523317389938" target="_blank" rel="noopener">WhatsApp 33 1738 9938</a>
           <a href="mailto:atencion@jelabpharma.com">atencion@jelabpharma.com</a>
+          <a href="https://maps.google.com/?q=Av%20Vallarta%206503%20G11%20Ciudad%20Granja%20Zapopan" target="_blank" rel="noopener" style="max-width:26ch">Av. Vallarta 6503 int. G11, Col. Ciudad Granja, CP 45010, Zapopan, Jal.</a>
         </div>
       </div>
     </div>

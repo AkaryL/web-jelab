@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#F4FAFC">
 <title>Tienda — JELAB Pharma · Minoxidil + Vitamina D3</title>
-<meta name="description" content="Compra Minoxidil + Vitamina D3 de JELAB Pharma. Menudeo, suscripción o mayoreo. Envío a todo México.">
+<meta name="description" content="Compra Minoxidil + Vitamina D3 de JELAB Pharma. Compra única o suscripción mensual con descuento. Envío a todo México.">
 <link rel="icon" href="favicon.png">
 <style>
   :root{
@@ -27,10 +27,7 @@
   p{margin:0}a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
   .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--edge)}
   .tnum{font-variant-numeric:tabular-nums}
-  .wordmark{font-family:var(--display);font-weight:900;font-size:1.3rem;letter-spacing:-.03em;
-    color:var(--ink);line-height:1;display:inline-flex;align-items:baseline;gap:.4rem;white-space:nowrap}
-  .wordmark .ph{font-family:var(--sans);font-weight:800;font-size:.55rem;letter-spacing:.24em;
-    text-transform:uppercase;color:var(--violet);transform:translateY(-.12em)}
+  .brand-logo{height:34px;width:auto;display:block}
 
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-weight:700;font-size:.98rem;
     font-family:var(--sans);padding:.8rem 1.3rem;border-radius:999px;border:2px solid transparent;cursor:pointer;
@@ -46,12 +43,15 @@
   .btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
   .btn.block{width:100%}
 
-  /* demo banner */
-  .demo-bar{background:var(--grad);color:#fff;font-size:.85rem;font-weight:600;text-align:center;
-    padding:.55rem 1rem;display:flex;gap:.6rem;align-items:center;justify-content:center;flex-wrap:wrap}
-  .demo-bar b{font-weight:800}
-  .demo-bar button{background:rgba(255,255,255,.2);border:0;color:#fff;border-radius:999px;
-    width:22px;height:22px;cursor:pointer;font-weight:800;line-height:1}
+  /* barra superior dinámica (info + promos) */
+  .topbar{background:var(--grad);color:#fff;font-size:.86rem;font-weight:700;text-align:center;
+    padding:.55rem 1rem;min-height:38px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .topbar .msg{display:inline-flex;gap:.5rem;align-items:center;justify-content:center;
+    transition:opacity .4s ease,transform .4s ease;will-change:opacity,transform}
+  .topbar .msg.out{opacity:0;transform:translateY(-6px)}
+  .topbar b{font-weight:900}
+  .topbar .tag-oferta{background:rgba(255,255,255,.22);border-radius:999px;padding:.1rem .5rem;font-size:.72rem;
+    font-weight:900;letter-spacing:.04em;text-transform:uppercase}
 
   /* header */
   header.site{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 88%,transparent);
@@ -68,7 +68,11 @@
   .shop-head{padding-block:clamp(28px,4vw,44px)}
   .shop-head .eyebrow{font-weight:700;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--magenta)}
   .shop-head h1{font-size:clamp(2rem,4.6vw,3rem);margin-top:.4rem}
-  .shop-head p{color:var(--ink-2);margin-top:.6rem;max-width:52ch}
+  .shop-head p{color:var(--ink-2);margin-top:.6rem;max-width:60ch}
+  .shop-feats{list-style:none;margin:1.1rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.55rem .9rem}
+  .shop-feats li{display:flex;align-items:center;gap:.5rem;background:var(--surface);border:1px solid var(--line);
+    border-radius:999px;padding:.4rem .9rem;font-size:.84rem;font-weight:700;color:var(--ink);box-shadow:var(--shadow-sm)}
+  .shop-feats li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--violet);flex:0 0 auto}
 
   /* catálogo */
   .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,3vw,24px);padding-bottom:clamp(40px,6vw,72px)}
@@ -104,7 +108,9 @@
   .stepper input{width:40px;height:40px;border:0;text-align:center;background:var(--surface);color:var(--ink);
     font-weight:800;font-size:1rem;-moz-appearance:textfield}
   .stepper input::-webkit-outer-spin-button,.stepper input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
-  .mayoreo-note{font-size:.8rem;color:var(--ink-2)}
+  .sub-note{font-size:.8rem;color:var(--violet);font-weight:700}
+  .stepper.locked{opacity:.45;pointer-events:none}
+  .li .mini .permes{font-size:.72rem;color:var(--ink-2);font-weight:700}
 
   /* cart drawer */
   .overlay{position:fixed;inset:0;background:rgba(20,12,30,.5);opacity:0;visibility:hidden;
@@ -181,15 +187,12 @@
 </head>
 <body>
 
-<div class="demo-bar" id="demoBar">
-  <span><b>Tienda en modo demostración</b> — los pagos se conectarán a Shopify. Precios de ejemplo.</span>
-  <button aria-label="Cerrar aviso" onclick="document.getElementById('demoBar').remove()">×</button>
-</div>
+<div class="topbar"><span class="msg" id="topMsg"></span></div>
 
 <header class="site">
   <div class="wrap nav">
     <a class="back" href="index.html">← Volver al inicio</a>
-    <a href="index.html" aria-label="JELAB Pharma"><span class="wordmark">JELAB<span class="ph">Pharma</span></span></a>
+    <a href="index.html" aria-label="JELAB Pharma"><img class="brand-logo" src="assets/logo-jelab.png" alt="JELAB Pharma"></a>
     <button class="cart-btn" id="cartBtn" aria-label="Abrir carrito">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
       Carrito <span class="count" id="cartCount">0</span>
@@ -203,7 +206,7 @@
     <div class="wrap shop-head">
       <span class="eyebrow">Tienda JELAB</span>
       <h1>Minoxidil + Vitamina D3</h1>
-      <p>Elige tu concentración y modalidad. Menudeo, suscripción con descuento, o mayoreo para barberías, clínicas y dermatólogos.</p>
+      <p>Tratamiento capilar por vía oral: una cápsula al día para frenar la caída y recuperar densidad. Elige tu concentración y modalidad — compra única o suscripción mensual con descuento.</p>
     </div>
     <div class="wrap grid" id="catalog"><!-- se llena por JS --></div>
   </section>
@@ -282,7 +285,7 @@
 </aside>
 
 <footer class="site">
-  <div class="wrap">JELAB Pharma — Este producto es un medicamento. Consulta a tu médico. Precios de ejemplo. © jelabpharma.com</div>
+  <div class="wrap">JELAB Pharma — Este producto es un medicamento. Consulta a tu médico.<br>Av. Vallarta 6503 int. G11, Col. Ciudad Granja, CP 45010, Zapopan, Jal. · © jelabpharma.com</div>
 </footer>
 
 <!-- Botón flotante de WhatsApp -->
@@ -308,9 +311,9 @@ const DEMO = !SHOPIFY.DOMAIN || !SHOPIFY.STOREFRONT_TOKEN;
    *** PRECIOS DE EJEMPLO — reemplazar por los reales *** */
 const PRODUCTS = {
   min5: { id:"min5", cls:"alta",    tag:"Concentración alta",    title:"Minoxidil 5 MG",
-          dose:"+ Vitamina D3 2000 UI · 60 cápsulas", price:999, img:"assets/img04.png" },
+          dose:"+ Vitamina D3 2000 UI · 60 cápsulas", price:850, img:"assets/img04.png" },
   min1: { id:"min1", cls:"inicial", tag:"Concentración inicial", title:"Minoxidil 1 MG",
-          dose:"+ Vitamina D3 2000 UI · 60 cápsulas", price:899, img:"assets/img06.png" }
+          dose:"+ Vitamina D3 2000 UI · 60 cápsulas", price:750, img:"assets/img06.png" }
 };
 const SUB_DISCOUNT = 0.10; // suscripción: -10%
 const WA = "https://wa.me/523317389938?text=";
@@ -326,14 +329,17 @@ const Store = {
 
   add(id, qty, mode){
     qty = Math.max(1, qty|0);
+    if(mode==="sub") qty = 1;                            // suscripción: siempre 1
     const k = this.keyOf(id, mode);
     const found = this.cart.find(l => this.keyOf(l.id, l.mode) === k);
-    if(found) found.qty += qty; else this.cart.push({ id, mode, qty });
+    if(found){ if(mode!=="sub") found.qty += qty; }      // no se acumula en suscripción
+    else this.cart.push({ id, mode, qty });
     this.save(); this.openCart();
   },
   setQty(id, mode, delta){
     const l = this.cart.find(x => x.id===id && x.mode===mode);
     if(!l) return;
+    if(mode==="sub" && delta>0) return;                  // suscripción: no más de 1
     l.qty += delta;
     if(l.qty < 1) this.cart = this.cart.filter(x => !(x.id===id && x.mode===mode));
     this.save();
@@ -379,45 +385,53 @@ const Store = {
             <span class="tag">${p.tag}</span>
             <h3>${p.title}</h3>
             <p class="dose">${p.dose}</p>
-            <div class="price"><span class="big tnum">${money(p.price)}*</span><span class="per">/ 60 cáps.</span></div>
+            <div class="price"><span class="big tnum">${money(p.price)}</span><span class="per">/ 60 cáps.</span></div>
           </div>
         </div>
         <div class="buy">
           <div class="modes" role="radiogroup" aria-label="Modalidad ${p.title}">
             <label><input type="radio" name="mode-${p.id}" value="unico" checked><span>Compra única<small>&nbsp;</small></span></label>
-            <label><input type="radio" name="mode-${p.id}" value="sub"><span>Suscripción<small>−10% al mes</small></span></label>
-            <label><input type="radio" name="mode-${p.id}" value="mayoreo"><span>Mayoreo<small>barberías/clínicas</small></span></label>
+            <label><input type="radio" name="mode-${p.id}" value="sub"><span>Suscripción<small>−10% · 1 caja/mes</small></span></label>
           </div>
           <div class="buy-row" data-buyrow="${p.id}">
-            <div class="stepper">
+            <div class="stepper" data-stepper="${p.id}">
               <button type="button" aria-label="Menos" onclick="Store.step('${p.id}',-1)">−</button>
-              <input id="qty-${p.id}" type="number" min="1" value="1" aria-label="Cantidad">
+              <input id="qty-${p.id}" type="number" min="1" value="1" aria-label="Cantidad" readonly>
               <button type="button" aria-label="Más" onclick="Store.step('${p.id}',1)">+</button>
             </div>
             <button class="btn btn-primary" style="flex:1" onclick="Store.addFromCard('${p.id}')">Agregar</button>
           </div>
-          <p class="mayoreo-note" data-note="${p.id}" hidden>Para mayoreo cotizamos por WhatsApp según volumen. <a href="#" onclick="Store.mayoreo('${p.id}');return false" style="color:var(--violet);font-weight:700">Cotizar →</a></p>
+          <p class="sub-note" data-subnote="${p.id}" hidden>Recibes 1 caja cada mes. Cancela cuando quieras.</p>
         </div>
       </article>`).join("");
 
-    // toggle mayoreo UI
+    // al cambiar de modalidad: en suscripción se bloquea la cantidad a 1
     Object.keys(PRODUCTS).forEach(id=>{
       document.querySelectorAll(`input[name="mode-${id}"]`).forEach(r=>{
-        r.addEventListener("change", ()=>{
-          const may = r.value==="mayoreo" && r.checked;
-          document.querySelector(`[data-buyrow="${id}"]`).style.display = may ? "none":"flex";
-          document.querySelector(`[data-note="${id}"]`).hidden = !may;
-        });
+        r.addEventListener("change", ()=> this.applyMode(id));
       });
+      this.applyMode(id);
     });
   },
-  step(id, d){ const i=document.getElementById("qty-"+id); i.value = Math.max(1,(parseInt(i.value)||1)+d); },
+  applyMode(id){
+    const sub = this.selectedMode(id)==="sub";
+    const stepper = document.querySelector(`[data-stepper="${id}"]`);
+    const input = document.getElementById("qty-"+id);
+    const note = document.querySelector(`[data-subnote="${id}"]`);
+    if(sub){ input.value = 1; stepper.classList.add("locked"); }
+    else { stepper.classList.remove("locked"); }
+    if(note) note.hidden = !sub;
+  },
+  step(id, d){
+    if(this.selectedMode(id)==="sub") return;           // suscripción: cantidad fija en 1
+    const i=document.getElementById("qty-"+id); i.value = Math.max(1,(parseInt(i.value)||1)+d);
+  },
   selectedMode(id){ const r=document.querySelector(`input[name="mode-${id}"]:checked`); return r?r.value:"unico"; },
   addFromCard(id){
-    const qty = parseInt(document.getElementById("qty-"+id).value)||1;
-    this.add(id, qty, this.selectedMode(id)==="sub" ? "sub" : "unico");
+    const mode = this.selectedMode(id)==="sub" ? "sub" : "unico";
+    const qty = mode==="sub" ? 1 : (parseInt(document.getElementById("qty-"+id).value)||1);
+    this.add(id, qty, mode);
   },
-  mayoreo(id){ window.open(WA + encodeURIComponent(`Hola, quiero cotización de MAYOREO de ${PRODUCTS[id].title} de JELAB.`), "_blank"); },
 
   render(){
     document.getElementById("cartCount").textContent = this.count();
@@ -438,7 +452,7 @@ const Store = {
           <div class="mini">
             <button aria-label="Menos" onclick="Store.setQty('${l.id}','${l.mode}',-1)">−</button>
             <span>${l.qty}</span>
-            <button aria-label="Más" onclick="Store.setQty('${l.id}','${l.mode}',1)">+</button>
+            ${l.mode==="sub" ? `<span class="permes">/mes</span>` : `<button aria-label="Más" onclick="Store.setQty('${l.id}','${l.mode}',1)">+</button>`}
           </div>
         </div>
         <div style="text-align:right">
@@ -472,6 +486,30 @@ const Store = {
   }
 };
 Store.init();
+
+/* ====== Barra superior dinámica (info + promos, rota sola) ====== */
+const TOP_MSGS = [
+  'Envío a todo México',
+  'Minoxidil + Vitamina D3 · 1 cápsula al día',
+  'Resultados visibles a partir de los 90 días',
+  '<span class="tag-oferta">Oferta</span> Suscríbete y ahorra <b>10% cada mes</b>',
+  '¿Dudas? Te asesoramos por WhatsApp',
+  'Hecho en México · 60 cápsulas (2 meses de tratamiento)'
+];
+(function(){
+  const el = document.getElementById("topMsg");
+  if(!el) return;
+  let i = 0;
+  el.innerHTML = TOP_MSGS[0];
+  setInterval(function(){
+    el.classList.add("out");
+    setTimeout(function(){
+      i = (i + 1) % TOP_MSGS.length;
+      el.innerHTML = TOP_MSGS[i];
+      el.classList.remove("out");
+    }, 400);
+  }, 3800);
+})();
 </script>
 </body>
 </html>
