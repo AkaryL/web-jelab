@@ -87,6 +87,11 @@
     border-color:rgba(255,255,255,.45);color:#fff}
   header.site:not(.scrolled) .cart-btn:hover{border-color:#fff;color:#fff}
   header.site:not(.scrolled) .cart-count{border-color:transparent}
+  .lang-btn{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;
+    font-weight:800;font-size:.78rem;padding:.42rem .72rem;cursor:pointer;line-height:1;
+    transition:border-color .15s ease,color .15s ease,background .3s ease}
+  .lang-btn:hover{border-color:var(--violet);color:var(--violet)}
+  header.site:not(.scrolled) .lang-btn{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.45);color:#fff}
 
   /* ====================== HERO (imagen de fondo + blur al scroll) ====================== */
   .hero{position:relative;min-height:min(92vh,800px);display:flex;align-items:flex-start;
@@ -141,7 +146,7 @@
   /* ====================== SECCIONES ====================== */
   section.pad{padding-block:clamp(32px,4.5vw,58px)}
   .sec-head{text-align:center;max-width:44ch;margin:0 auto clamp(20px,3vw,32px)}
-  .sec-head h2{font-size:clamp(2.3rem,5.2vw,3.7rem);margin-top:.5rem}
+  .sec-head h2{font-size:clamp(2.6rem,6vw,4.3rem);margin-top:.5rem}
   .sec-head p{margin-top:.9rem;color:var(--ink-2)}
 
   /* beneficios */
@@ -198,6 +203,27 @@
     box-shadow:var(--shadow);border:1px solid var(--line)}
   .results-card img{width:100%;height:auto}
   .results-note{text-align:center;color:var(--ink-2);font-size:.85rem;margin-top:1rem;font-style:italic}
+
+  /* testimonios */
+  .tst{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2.5vw,22px)}
+  @media (max-width:820px){.tst{grid-template-columns:1fr}}
+  .tst-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.5rem;
+    box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:.8rem}
+  .tst-stars{color:#F5A623;font-size:1.05rem;letter-spacing:2px;line-height:1}
+  .tst-card p{color:var(--ink);font-size:.98rem}
+  .tst-who{display:flex;align-items:center;gap:.7rem;margin-top:auto}
+  .tst-who .av{width:42px;height:42px;border-radius:50%;background:var(--tint-v);color:var(--violet);
+    display:grid;place-items:center;font-weight:900;flex:0 0 auto}
+  .tst-who b{font-size:.92rem}
+  .tst-who small{display:block;color:var(--ink-2);font-size:.78rem}
+
+  /* tira de confianza (envíos / calidad) */
+  .confia{background:var(--bg-2);border-block:1px solid var(--line)}
+  .confia .row{display:flex;flex-wrap:wrap;gap:.8rem 1.6rem;align-items:center;justify-content:center;padding-block:1.3rem}
+  .confia .lbl{font-weight:800;color:var(--ink-2);font-size:.9rem}
+  .confia .badge{border:1px dashed var(--line);border-radius:10px;padding:.5rem .95rem;color:var(--ink-2);
+    font-weight:800;font-size:.85rem;background:var(--surface)}
+  .confia .badge img{height:24px;width:auto}
 
   /* cómo actúa — activos (estilo flyer) */
   .actives{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3vw,26px)}
@@ -363,8 +389,11 @@
       <a href="#esperar">Qué esperar</a>
       <a href="#presentaciones">Presentaciones</a>
       <a href="#resultados">Resultados</a>
+      <a href="#faq">Preguntas</a>
+      <a href="#contacto">Contacto</a>
     </nav>
     <div style="display:flex;align-items:center;gap:.6rem">
+      <button class="lang-btn" id="langToggle" aria-label="Change language / Cambiar idioma">EN</button>
       <a class="btn btn-primary btn-sm" href="tienda.html">Comprar</a>
       <button class="cart-btn" id="cartOpen" aria-label="Abrir carrito" aria-haspopup="dialog">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
@@ -393,7 +422,7 @@
           <a class="btn btn-primary" href="#presentaciones">Comienza ahora</a>
           <a class="btn btn-light" href="#formula">Cómo funciona</a>
         </div>
-        <p class="hero-price"><span class="from">Desde</span><b>$375</b><span class="per">pesos&nbsp;al&nbsp;mes</span></p>
+        <p class="hero-price"><span class="from">Desde</span><b>$375</b><span class="per">pesos al mes</span></p>
       </div>
     </div>
   </section>
@@ -494,8 +523,8 @@
             <li>1 cápsula al día (de preferencia antes de dormir)</li>
             <li>2 meses de tratamiento</li>
           </ul>
-          <div class="price"><span class="big tnum">$850*</span><span class="per">/ 60 cáps.</span></div>
-          <button class="btn btn-primary add-cart" data-id="5mg" data-name="Minoxidil 5 MG" data-price="850" data-img="assets/img04.png">Agregar al carrito</button>
+          <div class="price"><span class="big tnum">$849</span><span class="per">/ 60 cáps.</span></div>
+          <button class="btn btn-primary add-cart" data-id="5mg" data-name="Minoxidil 5 MG" data-price="849" data-img="assets/img04.png">Agregar al carrito</button>
         </div>
       </article>
       <article class="plan inicial">
@@ -510,12 +539,12 @@
             <li>1 cápsula al día (de preferencia antes de dormir)</li>
             <li>2 meses de tratamiento</li>
           </ul>
-          <div class="price"><span class="big tnum">$750*</span><span class="per">/ 60 cáps.</span></div>
-          <button class="btn btn-primary add-cart" data-id="1mg" data-name="Minoxidil 1 MG" data-price="750" data-img="assets/img06.png">Agregar al carrito</button>
+          <div class="price"><span class="big tnum">$749</span><span class="per">/ 60 cáps.</span></div>
+          <button class="btn btn-primary add-cart" data-id="1mg" data-name="Minoxidil 1 MG" data-price="749" data-img="assets/img06.png">Agregar al carrito</button>
         </div>
       </article>
     </div>
-    <p class="note-price">* Precios de ejemplo. Reemplazar por el precio real antes de publicar.</p>
+    <p class="note-price">Envío gratis en compras desde $999. Precios en pesos mexicanos (MXN).</p>
   </section>
 
   <!-- RESULTADOS -->
@@ -530,6 +559,43 @@
     </div>
     <p class="results-note">Los resultados pueden variar de persona a persona.</p>
   </section>
+
+  <!-- TESTIMONIOS  (edita los textos/nombres; puedes cambiar la inicial del avatar) -->
+  <section class="pad wrap" id="testimonios">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Testimonios</span>
+      <h2>Lo que dicen quienes ya lo usan</h2>
+      <p>Experiencias reales de clientes con el tratamiento (reemplaza por tus testimonios).</p>
+    </div>
+    <div class="tst reveal">
+      <article class="tst-card">
+        <div class="tst-stars">★★★★★</div>
+        <p>“A los tres meses noté mucho menos caída y el cabello más lleno. La cápsula al día es súper práctica.”</p>
+        <div class="tst-who"><span class="av">A</span><div><b>Andrés M.</b><small>CDMX · 3 meses de uso</small></div></div>
+      </article>
+      <article class="tst-card">
+        <div class="tst-stars">★★★★★</div>
+        <p>“Empecé con el 1 MG por recomendación y me fue excelente. La atención por WhatsApp resolvió todas mis dudas.”</p>
+        <div class="tst-who"><span class="av">L</span><div><b>Laura G.</b><small>Guadalajara · 4 meses de uso</small></div></div>
+      </article>
+      <article class="tst-card">
+        <div class="tst-stars">★★★★★</div>
+        <p>“Buen precio y llegó rápido. Ya veo cabello nuevo en las entradas, muy contento con el resultado.”</p>
+        <div class="tst-who"><span class="av">J</span><div><b>Jorge R.</b><small>Monterrey · 5 meses de uso</small></div></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- TIRA DE CONFIANZA  (reemplaza los <span class="badge"> por <img> con los logos reales) -->
+  <div class="confia">
+    <div class="wrap row">
+      <span class="lbl">Enviamos con:</span>
+      <span class="badge">FedEx</span>
+      <span class="badge">DHL</span>
+      <span class="badge">Estafeta</span>
+      <span class="badge">Hecho en México</span>
+    </div>
+  </div>
 
   <!-- FAQ -->
   <section class="pad wrap" id="faq">
@@ -630,7 +696,7 @@
 
 </main>
 
-<footer class="site">
+<footer class="site" id="contacto">
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
@@ -651,12 +717,15 @@
           <a href="mailto:atencion@jelabpharma.com">atencion@jelabpharma.com</a>
           <a href="https://maps.google.com/?q=Av%20Vallarta%206503%20G11%20Ciudad%20Granja%20Zapopan" target="_blank" rel="noopener" style="max-width:26ch">Av. Vallarta 6503 int. G11, Col. Ciudad Granja, CP 45010, Zapopan, Jal.</a>
         </div>
+        <div class="foot-col">
+          <h4>Legal</h4>
+          <a href="aviso-privacidad.html">Aviso de Privacidad</a>
+          <a href="politica-envios.html">Política de Envíos</a>
+          <a href="terminos.html">Términos y Condiciones</a>
+        </div>
       </div>
     </div>
-    <p class="foot-legal">
-      Este producto es un medicamento. El consumo de este producto es responsabilidad de quien lo recomienda y de quien lo usa.
-      Consulta a tu médico. Los resultados pueden variar de persona a persona. © JELAB Pharma — jelabpharma.com
-    </p>
+    <p class="foot-legal">Este producto es un medicamento. El consumo de este producto es responsabilidad de quien lo recomienda y de quien lo usa. Consulta a tu médico. Los resultados pueden variar de persona a persona. © JELAB Pharma — jelabpharma.com</p>
   </div>
 </footer>
 
@@ -671,7 +740,7 @@
   <div class="cart-foot" id="cartFoot" hidden>
     <div class="cart-total"><span>Total</span><span class="t tnum" id="cartTotal">$0</span></div>
     <a class="btn btn-wa" id="cartCheckout" href="#" target="_blank" rel="noopener">Finalizar por WhatsApp</a>
-    <p class="hint">Coordinamos pago y envío por WhatsApp. * Precios de ejemplo.</p>
+    <p class="hint">Coordinamos pago y envío por WhatsApp.</p>
   </div>
 </aside>
 
@@ -688,25 +757,7 @@
     document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
   })();
 
-  /* Hero: difuminar y desvanecer la imagen de fondo al hacer scroll */
-  (function(){
-    var bg = document.getElementById('heroBg');
-    if(!bg) return;
-    var ticking = false;
-    function update(){
-      var y = window.scrollY || window.pageYOffset || 0;
-      var max = 620;                       // px de scroll para el efecto completo
-      var t = Math.min(1, y / max);
-      bg.style.filter    = 'blur(' + (t * 14).toFixed(1) + 'px)';
-      bg.style.transform = 'scale(' + (1 + t * 0.08).toFixed(3) + ')';
-      bg.style.opacity   = (1 - t * 0.55).toFixed(3);
-      ticking = false;
-    }
-    window.addEventListener('scroll', function(){
-      if(!ticking){ requestAnimationFrame(update); ticking = true; }
-    }, {passive:true});
-    update();
-  })();
+  /* (La imagen del hero permanece estática al hacer scroll — sin blur) */
 
   /* Header: transparente arriba, con fondo al hacer scroll */
   (function(){
@@ -799,5 +850,147 @@
     render();
   })();
 </script>
+
+<!-- ====================== TRADUCCIÓN ES / EN ====================== -->
+<script>
+window.I18N_MAP = {
+  "Fórmula":"Formula",
+  "Qué esperar":"What to expect",
+  "Presentaciones":"Options",
+  "Resultados":"Results",
+  "Preguntas":"FAQ",
+  "Contacto":"Contact",
+  "Comprar":"Buy",
+  "Minoxidil + Vitamina D3 ·":"Minoxidil + Vitamin D3 ·",
+  "Vía oral":"Oral",
+  "Recupera tu":"Regrow your",
+  "cabello":"hair",
+  "Resultados visibles a partir de 90 días con uso constante":"Visible results from 90 days with consistent use",
+  "Con respaldo y seguimiento médico":"Backed by medical follow-up",
+  "Fórmula magistral hecha en México":"Compounded formula, made in Mexico",
+  "Comienza ahora":"Start now",
+  "Cómo funciona":"How it works",
+  "Desde":"From",
+  "pesos al mes":"pesos/month",
+  "Hecho en México":"Made in Mexico",
+  "Fórmula magistral":"Compounded formula",
+  "Cómo actúa la fórmula":"How the formula works",
+  "Doble acción: Minoxidil + Vitamina D3":"Dual action: Minoxidil + Vitamin D3",
+  "Una fórmula avanzada para el cuidado capilar que trabaja desde el interior.":"An advanced hair-care formula that works from within.",
+  "Vía oral · Activo principal":"Oral · Main active",
+  "Vitamina D3 2000 UI":"Vitamin D3 2000 IU",
+  "Complemento sinérgico":"Synergistic complement",
+  "Estimula el crecimiento del cabello desde el interior.":"Stimulates hair growth from within.",
+  "Prolonga la fase de crecimiento (anágena) del folículo piloso.":"Extends the growth (anagen) phase of the hair follicle.",
+  "Mejora la densidad y el grosor del cabello.":"Improves hair density and thickness.",
+  "Ideal para tratar la caída capilar de origen androgenético.":"Ideal for treating androgenetic hair loss.",
+  "Favorece el ciclo de crecimiento del cabello.":"Supports the hair growth cycle.",
+  "Fortalece los folículos y mejora su funcionamiento.":"Strengthens follicles and improves their function.",
+  "Ayuda a reducir la caída asociada a deficiencia de vitamina D.":"Helps reduce shedding linked to vitamin D deficiency.",
+  "Contribuye a un cabello más fuerte, saludable y resistente.":"Contributes to stronger, healthier, more resilient hair.",
+  "Qué puedes esperar":"What to expect",
+  "Tu progreso, mes con mes":"Your progress, month by month",
+  "Tomando una cápsula al día, con uso constante. El avance es gradual y natural.":"Taking one capsule a day, with consistent use. Progress is gradual and natural.",
+  "2–8 semanas":"2–8 weeks",
+  "Renovación del ciclo":"Cycle renewal",
+  "Es normal una caída temporal del cabello al inicio (“shedding”). Esto indica que el ciclo capilar se está renovando, haciendo que algunos cabellos en fase de reposo se caigan antes para dar paso a nuevos.":"A temporary increase in shedding at the start is normal. It means the hair cycle is renewing, causing some resting hairs to fall out sooner to make way for new ones.",
+  "2–4 meses":"2–4 months",
+  "Más grueso y denso":"Thicker and denser",
+  "Comienzan a crecer nuevos cabellos y el cabello existente luce más grueso y con mayor densidad.":"New hairs begin to grow and existing hair looks thicker and denser.",
+  "6–12 meses":"6–12 months",
+  "Máximo beneficio":"Maximum benefit",
+  "Se alcanza el máximo beneficio del tratamiento, especialmente en la zona de la coronilla.":"The treatment reaches its maximum benefit, especially at the crown.",
+  "Tomando una al día":"Taking one a day",
+  "Resultados visibles a partir de los 90 días":"Visible results from 90 days",
+  "Elige tu concentración":"Choose your strength",
+  "Dos fórmulas con la misma dosis de Vitamina D3. Tu médico te ayuda a elegir la ideal para ti.":"Two formulas with the same Vitamin D3 dose. Your doctor helps you choose the right one for you.",
+  "Concentración alta":"High strength",
+  "+ Vitamina D3 2000 UI · 60 cápsulas":"+ Vitamin D3 2000 IU · 60 capsules",
+  "Máxima concentración para caída avanzada":"Maximum strength for advanced hair loss",
+  "Favorece mayor densidad y grosor capilar":"Promotes greater hair density and thickness",
+  "1 cápsula al día (de preferencia antes de dormir)":"1 capsule a day (preferably before bed)",
+  "2 meses de tratamiento":"2 months of treatment",
+  "/ 60 cáps.":"/ 60 caps.",
+  "Agregar al carrito":"Add to cart",
+  "Concentración inicial":"Starter strength",
+  "Ideal para personas con mayor sensibilidad al minoxidil (recomendado en mujeres)":"Ideal for people more sensitive to minoxidil (recommended for women)",
+  "Fortalece y mejora la densidad progresivamente":"Strengthens and improves density progressively",
+  "Envío gratis en compras desde $999. Precios en pesos mexicanos (MXN).":"Free shipping on orders from $999. Prices in Mexican pesos (MXN).",
+  "Resultados reales":"Real results",
+  "Mejora visible con uso constante":"Visible improvement with consistent use",
+  "Fotografías de seguimiento tras 3 meses de tratamiento con Minoxidil.":"Follow-up photos after 3 months of treatment with Minoxidil.",
+  "Los resultados pueden variar de persona a persona.":"Results may vary from person to person.",
+  "Testimonios":"Testimonials",
+  "Lo que dicen quienes ya lo usan":"What our customers say",
+  "Experiencias reales de clientes con el tratamiento (reemplaza por tus testimonios).":"Real customer experiences with the treatment (replace with your testimonials).",
+  "“A los tres meses noté mucho menos caída y el cabello más lleno. La cápsula al día es súper práctica.”":"“After three months I noticed much less shedding and fuller hair. The daily capsule is super convenient.”",
+  "CDMX · 3 meses de uso":"Mexico City · 3 months of use",
+  "“Empecé con el 1 MG por recomendación y me fue excelente. La atención por WhatsApp resolvió todas mis dudas.”":"“I started with the 1 MG as recommended and it worked great. WhatsApp support answered all my questions.”",
+  "Guadalajara · 4 meses de uso":"Guadalajara · 4 months of use",
+  "“Buen precio y llegó rápido. Ya veo cabello nuevo en las entradas, muy contento con el resultado.”":"“Great price and fast delivery. I already see new hair at the temples—very happy with the result.”",
+  "Monterrey · 5 meses de uso":"Monterrey · 5 months of use",
+  "Enviamos con:":"We ship with:",
+  "Preguntas frecuentes":"Frequently asked questions",
+  "Lo que más nos preguntan":"Your top questions",
+  "¿Cuándo empezaré a ver resultados?":"When will I start seeing results?",
+  "Cada persona responde de forma diferente, pero la mayoría comienza a notar una disminución en la caída del cabello durante las primeras 6 a 8 semanas (“shedding”). Esto indica que el ciclo capilar se está renovando. Los cambios visibles en densidad y crecimiento suelen observarse entre los 3 y 6 meses de uso constante. Para obtener los mejores resultados, es importante tomar una cápsula todos los días.":"Everyone responds differently, but most people begin to notice less hair shedding within the first 6 to 8 weeks. This means the hair cycle is renewing. Visible changes in density and growth are usually seen between 3 and 6 months of consistent use. For the best results, it's important to take one capsule every day.",
+  "¿Qué concentración es adecuada para mí: 1 MG o 5 MG?":"Which strength is right for me: 1 MG or 5 MG?",
+  "Ideal para caída leve o pérdida de densidad inicial.":"Ideal for mild hair loss or early density loss.",
+  "También puede utilizarse en personas más sensibles al Minoxidil.":"Can also be used by people more sensitive to Minoxidil.",
+  "Concentración recomendada en mujeres.":"Recommended strength for women.",
+  "Recomendado para alopecia androgenética moderada o avanzada.":"Recommended for moderate to advanced androgenetic alopecia.",
+  "Diseñado para quienes buscan una mayor estimulación del crecimiento capilar.":"Designed for those seeking stronger hair-growth stimulation.",
+  "Si tienes dudas, nuestro equipo puede orientarte y tu médico determinará la concentración más adecuada para tu caso.":"If in doubt, our team can guide you and your doctor will determine the most suitable strength for your case.",
+  "¿Cómo debo tomarlo?":"How should I take it?",
+  "Toma una cápsula al día, preferentemente antes de dormir. Puede ingerirse con o sin alimentos y debe acompañarse con un vaso de agua. La constancia es el factor más importante para obtener resultados.":"Take one capsule a day, preferably before bed. It can be taken with or without food and should be taken with a glass of water. Consistency is the most important factor for results.",
+  "¿Por qué tomarlo antes de dormir?":"Why take it before bed?",
+  "La razón principal es mejorar la tolerancia al medicamento y reducir la percepción de algunos efectos secundarios.":"The main reason is to improve tolerance to the medication and reduce the perception of some side effects.",
+  "¿Siempre debe tomarse por la noche?":"Does it always have to be taken at night?",
+  "No necesariamente.":"Not necessarily.",
+  "Si no presentas mareos ni otros efectos secundarios, puedes tomarlo por la mañana o por la noche.":"If you don't have dizziness or other side effects, you can take it in the morning or at night.",
+  "Algunas personas incluso prefieren tomarlo con la cena para evitar olvidos.":"Some people even prefer taking it with dinner to avoid forgetting.",
+  "Lo importante es tomarlo aproximadamente a la misma hora todos los días.":"The key is to take it at roughly the same time every day.",
+  "¿Debo suspender el tratamiento cuando vea resultados?":"Should I stop treatment once I see results?",
+  "No. El Minoxidil ayuda a mantener el crecimiento del cabello mientras se utiliza de forma continua. Si el tratamiento se suspende, es posible que con el tiempo el cabello vuelva gradualmente a su estado previo. Cualquier cambio en la dosis o suspensión debe realizarse bajo indicación médica.":"No. Minoxidil helps maintain hair growth while used continuously. If treatment is stopped, hair may gradually return to its previous state over time. Any change in dose or discontinuation should be made under medical guidance.",
+  "¿Es seguro? ¿Tiene efectos secundarios?":"Is it safe? Does it have side effects?",
+  "El Minoxidil oral es un medicamento que debe utilizarse bajo supervisión médica. La mayoría de las personas lo tolera adecuadamente, aunque algunas pueden presentar efectos secundarios como:":"Oral Minoxidil is a medication that should be used under medical supervision. Most people tolerate it well, though some may experience side effects such as:",
+  "Crecimiento de vello en otras zonas del cuerpo.":"Hair growth in other areas of the body.",
+  "Ligera disminución de la presión arterial.":"A slight drop in blood pressure.",
+  "Palpitaciones o aumento de la frecuencia cardiaca.":"Palpitations or increased heart rate.",
+  "Hinchazón por retención de líquidos (poco frecuente).":"Swelling from fluid retention (uncommon).",
+  "Suspende y consulta a tu médico si presentas efectos secundarios graves.":"Stop and consult your doctor if you experience serious side effects.",
+  "¿Quiénes no deben tomar Minoxidil oral?":"Who should not take oral Minoxidil?",
+  "Este tratamiento no está recomendado para:":"This treatment is not recommended for:",
+  "Mujeres embarazadas o en periodo de lactancia.":"Pregnant or breastfeeding women.",
+  "Personas con alergia al Minoxidil.":"People allergic to Minoxidil.",
+  "Pacientes con ciertas enfermedades cardiovasculares o presión arterial baja sin valoración médica.":"Patients with certain cardiovascular conditions or low blood pressure without medical evaluation.",
+  "Si padeces alguna enfermedad o tomas otros medicamentos, consulta primero a tu médico.":"If you have any condition or take other medications, consult your doctor first.",
+  "¿Cómo puedo realizar mi compra?":"How can I place my order?",
+  "Puedes hacer tu pedido de forma rápida por WhatsApp. Nuestro equipo resolverá tus dudas, confirmará tu pedido y coordinará el envío hasta tu domicilio. También puedes comprar directamente desde nuestra tienda en línea.":"You can order quickly via WhatsApp. Our team will answer your questions, confirm your order and arrange delivery to your home. You can also buy directly from our online store.",
+  "¿Por qué elegir JELAB?":"Why choose JELAB?",
+  "Fórmula con Minoxidil + Vitamina D3 2000 UI.":"Formula with Minoxidil + Vitamin D3 2000 IU.",
+  "Fabricado bajo altos estándares de calidad.":"Made under high quality standards.",
+  "Presentación de 60 cápsulas (2 meses de tratamiento).":"60-capsule pack (2 months of treatment).",
+  "Máxima calidad, sin pagar de más.":"Top quality, without overpaying.",
+  "Atención personalizada antes y durante el tratamiento.":"Personalized support before and during treatment.",
+  "Empieza a recuperar tu densidad hoy":"Start restoring your density today",
+  "Minoxidil + Vitamina D3 en cápsulas. Fórmula magistral hecha en México, con seguimiento médico.":"Minoxidil + Vitamin D3 capsules. Compounded formula made in Mexico, with medical follow-up.",
+  "Ver presentaciones":"See options",
+  "Pedir por WhatsApp":"Order via WhatsApp",
+  "Fórmulas magistrales para la salud capilar. Hecho en México.":"Compounded formulas for hair health. Made in Mexico.",
+  "Producto":"Product",
+  "Aviso de Privacidad":"Privacy Notice",
+  "Política de Envíos":"Shipping Policy",
+  "Términos y Condiciones":"Terms & Conditions",
+  "Este producto es un medicamento. El consumo de este producto es responsabilidad de quien lo recomienda y de quien lo usa. Consulta a tu médico. Los resultados pueden variar de persona a persona. © JELAB Pharma — jelabpharma.com":"This product is a medication. Its use is the responsibility of whoever recommends it and whoever uses it. Consult your doctor. Results may vary from person to person. © JELAB Pharma — jelabpharma.com",
+  "Tu carrito":"Your cart",
+  "Finalizar por WhatsApp":"Checkout via WhatsApp",
+  "Coordinamos pago y envío por WhatsApp.":"We coordinate payment and shipping via WhatsApp.",
+  "Tu carrito está vacío.":"Your cart is empty.",
+  "Agrega una presentación para empezar.":"Add a product to get started.",
+  "Quitar":"Remove"
+};
+</script>
+<script src="i18n.js"></script>
 </body>
 </html>

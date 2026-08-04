@@ -63,6 +63,10 @@
     padding:.5rem .9rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:.5rem;color:var(--ink)}
   .cart-btn .count{background:var(--magenta);color:#fff;border-radius:999px;min-width:20px;height:20px;
     font-size:.72rem;display:grid;place-items:center;padding:0 5px}
+  .lang-btn{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;
+    font-weight:800;font-size:.78rem;padding:.42rem .72rem;cursor:pointer;line-height:1;
+    transition:border-color .15s ease,color .15s ease}
+  .lang-btn:hover{border-color:var(--violet);color:var(--violet)}
 
   /* hero tienda */
   .shop-head{padding-block:clamp(28px,4vw,44px)}
@@ -143,6 +147,8 @@
   .sumrow.total{font-size:1.05rem;color:var(--ink);font-weight:800}
   .sumrow.total .tnum{font-family:var(--display)}
   .save-note{font-size:.78rem;color:var(--ok);font-weight:700}
+  .ship-note{font-size:.78rem;font-weight:700;color:var(--violet)}
+  .ship-note.free{color:var(--ok)}
 
   /* checkout / confirmación (vistas) */
   .view{display:none}
@@ -193,10 +199,13 @@
   <div class="wrap nav">
     <a class="back" href="index.html">← Volver al inicio</a>
     <a href="index.html" aria-label="JELAB Pharma"><img class="brand-logo" src="assets/logo-jelab.png" alt="JELAB Pharma"></a>
+    <div style="display:flex;align-items:center;gap:.6rem">
+    <button class="lang-btn" id="langToggle" aria-label="Change language / Cambiar idioma">EN</button>
     <button class="cart-btn" id="cartBtn" aria-label="Abrir carrito">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
       Carrito <span class="count" id="cartCount">0</span>
     </button>
+    </div>
   </div>
 </header>
 
@@ -242,7 +251,7 @@
           <h3>Tu pedido</h3>
           <div id="coItems"></div>
           <div class="sl" style="border-top:1px solid var(--line);margin-top:.6rem;padding-top:.7rem"><span>Subtotal</span><b id="coSubtotal" class="tnum">$0</b></div>
-          <div class="sl"><span>Envío</span><span style="color:var(--ink-2)">Por calcular</span></div>
+          <div class="sl"><span>Envío</span><span id="coShip" style="color:var(--ink-2)">—</span></div>
           <div class="sl" style="font-size:1.1rem;color:var(--ink)"><b>Total</b><b id="coTotal" class="tnum" style="font-family:var(--display)">$0</b></div>
           <button class="btn btn-grad block" type="submit" style="margin-top:1rem">Pagar de forma segura</button>
           <div class="secure">
@@ -278,6 +287,7 @@
   <div class="items" id="cartItems"></div>
   <div class="foot" id="cartFoot" hidden>
     <div class="sumrow"><span>Subtotal</span><b class="tnum" id="cartSubtotal">$0</b></div>
+    <div class="ship-note" id="cartShip"></div>
     <div class="save-note" id="cartSave" hidden></div>
     <button class="btn btn-grad block" id="goCheckout">Finalizar compra</button>
     <button class="btn btn-ghost block" id="keepShopping">Seguir comprando</button>
@@ -285,7 +295,11 @@
 </aside>
 
 <footer class="site">
-  <div class="wrap">JELAB Pharma — Este producto es un medicamento. Consulta a tu médico.<br>Av. Vallarta 6503 int. G11, Col. Ciudad Granja, CP 45010, Zapopan, Jal. · © jelabpharma.com</div>
+  <div class="wrap">
+    <a href="aviso-privacidad.html">Aviso de Privacidad</a> · <a href="politica-envios.html">Política de Envíos</a> · <a href="terminos.html">Términos y Condiciones</a><br>
+    JELAB Pharma — Este producto es un medicamento. Consulta a tu médico.<br>
+    Av. Vallarta 6503 int. G11, Col. Ciudad Granja, CP 45010, Zapopan, Jal. · © jelabpharma.com
+  </div>
 </footer>
 
 <!-- Botón flotante de WhatsApp -->
@@ -311,11 +325,13 @@ const DEMO = !SHOPIFY.DOMAIN || !SHOPIFY.STOREFRONT_TOKEN;
    *** PRECIOS DE EJEMPLO — reemplazar por los reales *** */
 const PRODUCTS = {
   min5: { id:"min5", cls:"alta",    tag:"Concentración alta",    title:"Minoxidil 5 MG",
-          dose:"+ Vitamina D3 2000 UI · 60 cápsulas", price:850, img:"assets/img04.png" },
+          dose:"+ Vitamina D3 2000 UI · 60 cápsulas", price:849, img:"assets/img04.png" },
   min1: { id:"min1", cls:"inicial", tag:"Concentración inicial", title:"Minoxidil 1 MG",
-          dose:"+ Vitamina D3 2000 UI · 60 cápsulas", price:750, img:"assets/img06.png" }
+          dose:"+ Vitamina D3 2000 UI · 60 cápsulas", price:749, img:"assets/img06.png" }
 };
-const SUB_DISCOUNT = 0.10; // suscripción: -10%
+const SUB_DISCOUNT = 0.10;   // suscripción: -10%
+const FREE_SHIP_MIN = 999;   // envío gratis en compras desde este monto (MXN)
+const SHIP_COST = 150;       // costo de envío si la compra es menor
 const WA = "https://wa.me/523317389938?text=";
 
 const money = n => "$" + n.toLocaleString("es-MX");
@@ -348,6 +364,8 @@ const Store = {
 
   unitPrice(l){ const p = PRODUCTS[l.id].price; return l.mode==="sub" ? Math.round(p*(1-SUB_DISCOUNT)) : p; },
   subtotal(){ return this.cart.reduce((s,l)=> s + this.unitPrice(l)*l.qty, 0); },
+  shipping(){ return (this.cart.length && this.subtotal() < FREE_SHIP_MIN) ? SHIP_COST : 0; },
+  total(){ return this.subtotal() + this.shipping(); },
   saved(){ return this.cart.reduce((s,l)=> s + (l.mode==="sub" ? (PRODUCTS[l.id].price - this.unitPrice(l))*l.qty : 0), 0); },
   count(){ return this.cart.reduce((s,l)=> s + l.qty, 0); },
   modeLabel(m){ return m==="sub" ? "Suscripción mensual (−10%)" : "Compra única"; },
@@ -465,6 +483,14 @@ const Store = {
     const save = this.saved();
     const sv = document.getElementById("cartSave");
     if(save>0){ sv.hidden=false; sv.textContent = `Ahorras ${money(save)} con suscripción`; } else sv.hidden=true;
+    // nota de envío
+    const shipEl = document.getElementById("cartShip");
+    const falta = FREE_SHIP_MIN - this.subtotal();
+    if(this.subtotal() >= FREE_SHIP_MIN){
+      shipEl.className = "ship-note free"; shipEl.textContent = "¡Tienes envío gratis!";
+    } else {
+      shipEl.className = "ship-note"; shipEl.textContent = `Te faltan ${money(falta)} para envío gratis`;
+    }
   },
 
   renderCheckout(){
@@ -473,7 +499,11 @@ const Store = {
       return `<div class="sl"><span>${p.title} · ${this.modeLabel(l.mode)} × ${l.qty}</span><b class="tnum">${money(this.unitPrice(l)*l.qty)}</b></div>`;
     }).join("");
     document.getElementById("coSubtotal").textContent = money(this.subtotal());
-    document.getElementById("coTotal").textContent = money(this.subtotal());
+    const ship = this.shipping();
+    const shipEl = document.getElementById("coShip");
+    shipEl.textContent = ship===0 ? "Gratis" : money(ship);
+    shipEl.style.color = ship===0 ? "var(--ok)" : "var(--ink-2)";
+    document.getElementById("coTotal").textContent = money(this.total());
   },
 
   init(){
@@ -489,10 +519,11 @@ Store.init();
 
 /* ====== Barra superior dinámica (info + promos, rota sola) ====== */
 const TOP_MSGS = [
+  '<span class="tag-oferta">Oferta</span> Envío gratis en compras desde $999',
   'Envío a todo México',
   'Minoxidil + Vitamina D3 · 1 cápsula al día',
   'Resultados visibles a partir de los 90 días',
-  '<span class="tag-oferta">Oferta</span> Suscríbete y ahorra <b>10% cada mes</b>',
+  '<span class="tag-oferta">Oferta</span> Suscríbete y ahorra 10% cada mes',
   '¿Dudas? Te asesoramos por WhatsApp',
   'Hecho en México · 60 cápsulas (2 meses de tratamiento)'
 ];
@@ -511,5 +542,70 @@ const TOP_MSGS = [
   }, 3800);
 })();
 </script>
+
+<!-- ====================== TRADUCCIÓN ES / EN ====================== -->
+<script>
+window.I18N_MAP = {
+  "← Volver al inicio":"← Back to home",
+  "Carrito":"Cart",
+  "Oferta":"Offer",
+  "Envío gratis en compras desde $999":"Free shipping on orders from $999",
+  "Envío a todo México":"Shipping across Mexico",
+  "Minoxidil + Vitamina D3 · 1 cápsula al día":"Minoxidil + Vitamin D3 · 1 capsule a day",
+  "Resultados visibles a partir de los 90 días":"Visible results from 90 days",
+  "Suscríbete y ahorra 10% cada mes":"Subscribe and save 10% every month",
+  "¿Dudas? Te asesoramos por WhatsApp":"Questions? We help you on WhatsApp",
+  "Hecho en México · 60 cápsulas (2 meses de tratamiento)":"Made in Mexico · 60 capsules (2 months of treatment)",
+  "Tienda JELAB":"JELAB Store",
+  "Minoxidil + Vitamina D3":"Minoxidil + Vitamin D3",
+  "Tratamiento capilar por vía oral: una cápsula al día para frenar la caída y recuperar densidad. Elige tu concentración y modalidad — compra única o suscripción mensual con descuento.":"Oral hair treatment: one capsule a day to stop hair loss and restore density. Choose your strength and plan — one-time purchase or monthly subscription with a discount.",
+  "Concentración alta":"High strength",
+  "Concentración inicial":"Starter strength",
+  "+ Vitamina D3 2000 UI · 60 cápsulas":"+ Vitamin D3 2000 IU · 60 capsules",
+  "/ 60 cáps.":"/ 60 caps.",
+  "Compra única":"One-time",
+  "Suscripción":"Subscription",
+  "−10% · 1 caja/mes":"−10% · 1 box/month",
+  "Agregar":"Add",
+  "Recibes 1 caja cada mes. Cancela cuando quieras.":"You receive 1 box every month. Cancel anytime.",
+  "Tu carrito":"Your cart",
+  "Suscripción mensual (−10%)":"Monthly subscription (−10%)",
+  "/mes":"/month",
+  "Quitar":"Remove",
+  "Tu carrito está vacío.":"Your cart is empty.",
+  "Agrega un producto para empezar.":"Add a product to get started.",
+  "¡Tienes envío gratis!":"You have free shipping!",
+  "Finalizar compra":"Checkout",
+  "Seguir comprando":"Continue shopping",
+  "← Seguir comprando":"← Continue shopping",
+  "Datos de envío":"Shipping details",
+  "Nombre":"First name",
+  "Apellidos":"Last name",
+  "Correo":"Email",
+  "Calle y número":"Street and number",
+  "Colonia":"Neighborhood",
+  "Código postal":"Postal code",
+  "Ciudad":"City",
+  "Estado":"State",
+  "Requiero factura (CFDI). Te pediremos tus datos fiscales por WhatsApp.":"I need an invoice (CFDI). We'll ask for your tax details via WhatsApp.",
+  "Tu pedido":"Your order",
+  "Envío":"Shipping",
+  "Pagar de forma segura":"Pay securely",
+  "Pago protegido — procesado por Shopify":"Protected payment — processed by Shopify",
+  "¡Tu pedido está listo!":"Your order is ready!",
+  "Gracias por tu compra. Te enviaremos la confirmación y el seguimiento de tu envío.":"Thank you for your purchase. We'll send you the confirmation and tracking for your shipment.",
+  "Nota (modo demo):":"Note (demo mode):",
+  "en producción, este botón lleva al":"in production, this button goes to the",
+  "checkout seguro de Shopify":"secure Shopify checkout",
+  ", donde el cliente paga con tarjeta, OXXO o SPEI y recibe su confirmación por correo automáticamente. Aquí no se procesó ningún cobro.":", where the customer pays by card, OXXO or SPEI and automatically receives their confirmation by email. No charge was processed here.",
+  "Volver al inicio":"Back to home",
+  "Aviso de Privacidad":"Privacy Notice",
+  "Política de Envíos":"Shipping Policy",
+  "Términos y Condiciones":"Terms & Conditions",
+  "JELAB Pharma — Este producto es un medicamento. Consulta a tu médico.":"JELAB Pharma — This product is a medication. Consult your doctor.",
+  "Escríbenos":"Message us"
+};
+</script>
+<script src="i18n.js"></script>
 </body>
 </html>
