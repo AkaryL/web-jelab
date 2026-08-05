@@ -179,7 +179,22 @@
   .demo-inline{background:var(--tint-v);border:1px dashed var(--violet);border-radius:12px;padding:.9rem 1rem;
     font-size:.85rem;color:var(--ink);margin-top:1.4rem;text-align:left}
 
-  footer.site{border-top:1px solid var(--line);padding-block:1.6rem;color:var(--ink-2);font-size:.82rem;text-align:center;margin-top:2rem}
+  /* footer (mismo estilo que index) */
+  footer.site{background:var(--bg-2);border-top:1px solid var(--line);
+    padding-block:clamp(36px,5vw,56px);margin-top:clamp(56px,8vw,96px)}
+  .foot-grid{display:flex;flex-wrap:wrap;gap:2rem;justify-content:space-between;align-items:flex-start}
+  .foot-cofepris{display:flex;align-items:center;gap:.7rem;margin-top:1.1rem;
+    background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:.6rem .8rem;width:max-content;max-width:100%}
+  .foot-cofepris img{height:36px;width:auto;flex:0 0 auto}
+  .foot-cofepris span{font-size:.76rem;font-weight:800;color:var(--ink-2);line-height:1.2}
+  .foot-brand p{color:var(--ink-2);font-size:.9rem;max-width:34ch}
+  .foot-links{display:flex;gap:3rem;flex-wrap:wrap}
+  .foot-col h4{font-family:var(--sans);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--ink-2);margin:0 0 .7rem}
+  .foot-col a{display:block;font-weight:600;color:var(--ink);padding:.2rem 0;font-size:.95rem}
+  .foot-col a:hover{color:var(--violet)}
+  .foot-legal{margin-top:2rem;padding-top:1.3rem;border-top:1px solid var(--line);
+    color:var(--ink-2);font-size:.8rem;line-height:1.5}
 
   /* Botón flotante WhatsApp */
   .wa-float{position:fixed;right:22px;bottom:22px;z-index:45;display:inline-flex;align-items:center;justify-content:center;
@@ -294,11 +309,40 @@
   </div>
 </aside>
 
-<footer class="site">
+<footer class="site" id="contacto">
   <div class="wrap">
-    <a href="aviso-privacidad.html">Aviso de Privacidad</a> · <a href="politica-envios.html">Política de Envíos</a> · <a href="terminos.html">Términos y Condiciones</a><br>
-    JELAB Pharma — Este producto es un medicamento. Consulta a tu médico.<br>
-    Av. Vallarta 6503, Col. Ciudad Granja, CP 45010, Zapopan, Jal. · © jelabpharma.com
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="index.html" aria-label="JELAB Pharma"><img class="brand-logo" src="assets/logo-jelab.png" alt="JELAB Pharma"></a>
+        <p style="margin-top:.8rem">Fórmulas magistrales para la salud capilar. Hecho en México.</p>
+        <div class="foot-cofepris">
+          <img src="assets/cofepris.png" alt="COFEPRIS" loading="lazy">
+          <span>Regulado por COFEPRIS</span>
+        </div>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col">
+          <h4>Producto</h4>
+          <a href="index.html#formula">Fórmula</a>
+          <a href="index.html#esperar">Qué esperar</a>
+          <a href="index.html#presentaciones">Presentaciones</a>
+          <a href="index.html#resultados">Resultados</a>
+        </div>
+        <div class="foot-col">
+          <h4>Contacto</h4>
+          <a href="https://wa.me/523317389938" target="_blank" rel="noopener">WhatsApp 33 1738 9938</a>
+          <a href="mailto:atencion@jelabpharma.com">atencion@jelabpharma.com</a>
+          <a href="https://maps.google.com/?q=Av%20Vallarta%206503%20Ciudad%20Granja%20Zapopan" target="_blank" rel="noopener" style="max-width:26ch">Av. Vallarta 6503, Col. Ciudad Granja, CP 45010, Zapopan, Jal.</a>
+        </div>
+        <div class="foot-col">
+          <h4>Legal</h4>
+          <a href="aviso-privacidad.html">Aviso de Privacidad</a>
+          <a href="politica-envios.html">Política de Envíos</a>
+          <a href="terminos.html">Términos y Condiciones</a>
+        </div>
+      </div>
+    </div>
+    <p class="foot-legal">Este producto es un medicamento. El consumo de este producto es responsabilidad de quien lo recomienda y de quien lo usa. Consulta a tu médico. Los resultados pueden variar de persona a persona. © JELAB Pharma — jelabpharma.com</p>
   </div>
 </footer>
 
@@ -517,6 +561,15 @@ const Store = {
 };
 Store.init();
 
+/* Producto que llega desde index.html (?add=min5 / ?add=min1): se agrega solo y abre el carrito */
+(function(){
+  const add = new URLSearchParams(location.search).get("add");
+  if(add && PRODUCTS[add]){
+    Store.add(add, 1, "unico");
+    history.replaceState(null, "", location.pathname);
+  }
+})();
+
 /* ====== Barra superior dinámica (info + promos, rota sola) ====== */
 const TOP_MSGS = [
   '<span class="tag-oferta">Oferta</span> Envío gratis en compras desde $999',
@@ -603,6 +656,15 @@ window.I18N_MAP = {
   "Política de Envíos":"Shipping Policy",
   "Términos y Condiciones":"Terms & Conditions",
   "JELAB Pharma — Este producto es un medicamento. Consulta a tu médico.":"JELAB Pharma — This product is a medication. Consult your doctor.",
+  "Fórmulas magistrales para la salud capilar. Hecho en México.":"Compounded formulas for hair health. Made in Mexico.",
+  "Regulado por COFEPRIS":"Regulated by COFEPRIS",
+  "Producto":"Product",
+  "Fórmula":"Formula",
+  "Qué esperar":"What to expect",
+  "Presentaciones":"Options",
+  "Resultados":"Results",
+  "Contacto":"Contact",
+  "Este producto es un medicamento. El consumo de este producto es responsabilidad de quien lo recomienda y de quien lo usa. Consulta a tu médico. Los resultados pueden variar de persona a persona. © JELAB Pharma — jelabpharma.com":"This product is a medication. Its use is the responsibility of whoever recommends it and whoever uses it. Consult your doctor. Results may vary from person to person. © JELAB Pharma — jelabpharma.com",
   "Escríbenos":"Message us"
 };
 </script>
