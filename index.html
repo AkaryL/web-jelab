@@ -223,7 +223,11 @@
   .confia .lbl{font-weight:800;color:var(--ink-2);font-size:.9rem}
   .confia .badge{border:1px dashed var(--line);border-radius:10px;padding:.5rem .95rem;color:var(--ink-2);
     font-weight:800;font-size:.85rem;background:var(--surface)}
-  .confia .badge img{height:24px;width:auto}
+  .confia .carrier{height:24px;width:auto;opacity:.78;transition:opacity .2s ease}
+  .confia .carrier:hover{opacity:1}
+  .confia .carrier.estafeta{filter:brightness(0)}      /* rojo → negro para combinar */
+  .confia .carrier.cofepris{height:36px;opacity:.95}
+  .confia .sep{width:1px;height:26px;background:var(--line)}
 
   /* cómo actúa — activos (estilo flyer) */
   .actives{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3vw,26px)}
@@ -282,6 +286,10 @@
     padding-block:clamp(36px,5vw,56px);margin-top:clamp(56px,8vw,96px)}
   .foot-grid{display:flex;flex-wrap:wrap;gap:2rem;justify-content:space-between;align-items:flex-start}
   .foot-brand .wordmark{margin-bottom:.8rem;font-size:1.5rem}
+  .foot-cofepris{display:flex;align-items:center;gap:.7rem;margin-top:1.1rem;
+    background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:.6rem .8rem;width:max-content;max-width:100%}
+  .foot-cofepris img{height:36px;width:auto;flex:0 0 auto}
+  .foot-cofepris span{font-size:.76rem;font-weight:800;color:var(--ink-2);line-height:1.2}
   .foot-brand p{color:var(--ink-2);font-size:.9rem;max-width:34ch}
   .foot-links{display:flex;gap:3rem;flex-wrap:wrap}
   .foot-col h4{font-family:var(--sans);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;
@@ -586,14 +594,13 @@
     </div>
   </section>
 
-  <!-- TIRA DE CONFIANZA  (reemplaza los <span class="badge"> por <img> con los logos reales) -->
+  <!-- TIRA DE CONFIANZA -->
   <div class="confia">
     <div class="wrap row">
       <span class="lbl">Enviamos con:</span>
-      <span class="badge">FedEx</span>
-      <span class="badge">DHL</span>
-      <span class="badge">Estafeta</span>
-      <span class="badge">Hecho en México</span>
+      <img class="carrier" src="assets/fedex.png" alt="FedEx" loading="lazy">
+      <img class="carrier" src="assets/dhl.png" alt="DHL" loading="lazy">
+      <img class="carrier estafeta" src="assets/estafeta.png" alt="Estafeta" loading="lazy">
     </div>
   </div>
 
@@ -702,6 +709,10 @@
       <div class="foot-brand">
         <a class="brand" href="#top" aria-label="JELAB Pharma"><img src="assets/logo-jelab.png" alt="JELAB Pharma"></a>
         <p style="margin-top:.8rem">Fórmulas magistrales para la salud capilar. Hecho en México.</p>
+        <div class="foot-cofepris">
+          <img src="assets/cofepris.png" alt="COFEPRIS" loading="lazy">
+          <span>Regulado por COFEPRIS</span>
+        </div>
       </div>
       <div class="foot-links">
         <div class="foot-col">
@@ -978,6 +989,7 @@ window.I18N_MAP = {
   "Ver presentaciones":"See options",
   "Pedir por WhatsApp":"Order via WhatsApp",
   "Fórmulas magistrales para la salud capilar. Hecho en México.":"Compounded formulas for hair health. Made in Mexico.",
+  "Regulado por COFEPRIS":"Regulated by COFEPRIS",
   "Producto":"Product",
   "Aviso de Privacidad":"Privacy Notice",
   "Política de Envíos":"Shipping Policy",
