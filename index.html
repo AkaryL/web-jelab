@@ -69,29 +69,21 @@
   .btn-white:hover{transform:translateY(-2px)}
 
   /* ====================== HEADER (transparente sobre el hero, blanco al scroll) ====================== */
-  header.site{position:fixed;top:0;left:0;right:0;z-index:40;background:transparent;border-bottom:1px solid transparent;
+  header.site{position:fixed;top:0;left:0;right:0;z-index:40;
+    background:color-mix(in srgb,var(--bg) 92%,transparent);
+    backdrop-filter:saturate(1.2) blur(10px);border-bottom:1px solid var(--line);
     transition:background .3s ease, border-color .3s ease, backdrop-filter .3s ease}
-  header.site.scrolled{background:color-mix(in srgb,var(--bg) 86%,transparent);
-    backdrop-filter:saturate(1.2) blur(10px);border-bottom-color:var(--line)}
   .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.7rem}
   .nav-links{display:flex;gap:1.4rem;font-weight:600;font-size:.95rem;color:var(--ink-2)}
   .nav-links a:hover{color:var(--violet)}
   @media (max-width:860px){.nav-links{display:none}}
   section[id]{scroll-margin-top:74px}
 
-  /* estado transparente (arriba, sobre la imagen): todo en blanco */
   .brand img{transition:filter .3s ease}
-  header.site:not(.scrolled) .nav-links a{color:rgba(255,255,255,.92)}
-  header.site:not(.scrolled) .nav-links a:hover{color:#fff}
-  header.site:not(.scrolled) .cart-btn{background:rgba(255,255,255,.12);
-    border-color:rgba(255,255,255,.45);color:#fff}
-  header.site:not(.scrolled) .cart-btn:hover{border-color:#fff;color:#fff}
-  header.site:not(.scrolled) .cart-count{border-color:transparent}
   .lang-btn{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;
     font-weight:800;font-size:.78rem;padding:.42rem .72rem;cursor:pointer;line-height:1;
     transition:border-color .15s ease,color .15s ease,background .3s ease}
   .lang-btn:hover{border-color:var(--violet);color:var(--violet)}
-  header.site:not(.scrolled) .lang-btn{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.45);color:#fff}
 
   /* ====================== HERO (imagen de fondo + blur al scroll) ====================== */
   .hero{position:relative;min-height:min(92vh,800px);display:flex;align-items:flex-start;
@@ -144,10 +136,8 @@
     justify-content:center;font-weight:700;font-size:.92rem;color:var(--ink-2)}
   .trust li{display:flex;align-items:center;gap:.5rem}
   .trust .dot{width:7px;height:7px;border-radius:50%;background:var(--violet)}
-  .trust ul{padding-bottom:.4rem}
-  .trust-cofepris{display:flex;align-items:center;justify-content:center;gap:.6rem;padding-bottom:1.1rem}
-  .trust-cofepris img{height:42px;width:auto}
-  .trust-cofepris span{font-weight:800;font-size:.82rem;color:var(--ink-2);letter-spacing:.02em}
+  .cofepris-band{display:flex;justify-content:center;padding-block:clamp(18px,3vw,30px)}
+  .cofepris-band img{height:clamp(48px,9vw,64px);width:auto}
 
   /* ====================== SECCIONES ====================== */
   section.pad{padding-block:clamp(32px,4.5vw,58px)}
@@ -446,11 +436,12 @@
         <li><span class="dot"></span>Hecho en México</li>
         <li><span class="dot"></span>Fórmula magistral</li>
       </ul>
-      <div class="trust-cofepris">
-        <img src="assets/cofepris.png" alt="COFEPRIS" loading="lazy">
-        <span>Regulado por COFEPRIS</span>
-      </div>
     </div>
+  </div>
+
+  <!-- COFEPRIS (solo logo, debajo de la tira de confianza) -->
+  <div class="cofepris-band">
+    <img src="assets/cofepris.png" alt="COFEPRIS" loading="lazy">
   </div>
 
   <!-- COMO ACTUA LA FORMULA -->
