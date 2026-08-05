@@ -100,7 +100,10 @@
     background:#d3d5d7 url("assets/hero-desktop.png") center 78%/cover no-repeat;
     transform-origin:50% 50%;will-change:filter,opacity,transform}
   @media (max-width:760px){
-    .hero-bg{background-image:url("assets/hero-mobile.png");background-position:center 74%}
+    /* respeta el largo real de la imagen vertical (941x1672) */
+    .hero{min-height:0;aspect-ratio:941 / 1672}
+    .hero-bg{background-image:url("assets/hero-mobile.png");
+      background-position:center top;background-size:cover}
   }
   .hero > .wrap{width:100%}
   .hero-inner{position:relative;z-index:2;width:min(740px,100%);color:#fff}
