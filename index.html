@@ -79,6 +79,24 @@
   @media (max-width:860px){.nav-links{display:none}}
   section[id]{scroll-margin-top:74px}
 
+  /* menú hamburguesa (móvil) */
+  .nav-toggle{display:none;width:42px;height:42px;border-radius:999px;border:1.5px solid var(--line);
+    background:var(--surface);color:var(--ink);cursor:pointer;place-items:center;
+    transition:border-color .15s ease,color .15s ease}
+  .nav-toggle:hover{border-color:var(--violet);color:var(--violet)}
+  .nav-toggle svg{width:22px;height:22px}
+  .mobile-nav{display:none;flex-direction:column;background:var(--surface);
+    border-top:1px solid var(--line);padding:.3rem var(--edge) .8rem}
+  .mobile-nav a{padding:.85rem .2rem;font-weight:700;font-size:1rem;color:var(--ink);
+    border-bottom:1px solid var(--line-2)}
+  .mobile-nav a:last-child{border-bottom:none}
+  .mobile-nav a:hover{color:var(--violet)}
+  @media (max-width:860px){
+    .nav-toggle{display:grid}
+    .nav-buy{display:none}
+    .mobile-nav.open{display:flex}
+  }
+
   .brand img{transition:filter .3s ease}
   .lang-btn{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;
     font-weight:800;font-size:.78rem;padding:.42rem .72rem;cursor:pointer;line-height:1;
@@ -212,6 +230,10 @@
     display:grid;place-items:center;font-weight:900;flex:0 0 auto}
   .tst-who b{font-size:.92rem}
   .tst-who small{display:block;color:var(--ink-2);font-size:.78rem}
+  .tst-translated{display:none;margin-top:-.5rem;color:var(--ink-2);font-size:.72rem;font-style:italic}
+  html[lang="en"] .tst-translated{display:block}
+  .tst-recommend{text-align:center;margin-top:clamp(20px,3.5vw,32px);font-weight:800;
+    font-size:clamp(1rem,2.2vw,1.18rem);color:var(--ink)}
 
   /* tira de confianza (envíos / calidad) */
   .confia{background:var(--bg-2);border-block:1px solid var(--line)}
@@ -398,13 +420,25 @@
     </nav>
     <div style="display:flex;align-items:center;gap:.6rem">
       <button class="lang-btn" id="langToggle" aria-label="Change language / Cambiar idioma">EN</button>
-      <a class="btn btn-primary btn-sm" href="tienda.html">Comprar</a>
+      <a class="btn btn-primary btn-sm nav-buy" href="tienda.html">Comprar</a>
       <button class="cart-btn" id="cartOpen" aria-label="Abrir carrito" aria-haspopup="dialog">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
         <span class="cart-count" id="cartCount" hidden>0</span>
       </button>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileNav">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
     </div>
   </div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Menú">
+    <a href="#formula">Fórmula</a>
+    <a href="#esperar">Qué esperar</a>
+    <a href="#presentaciones">Presentaciones</a>
+    <a href="#resultados">Resultados</a>
+    <a href="#faq">Preguntas</a>
+    <a href="#contacto">Contacto</a>
+    <a href="tienda.html">Comprar</a>
+  </nav>
 </header>
 
 <main id="top">
@@ -490,7 +524,7 @@
       <div class="tl-item t1">
         <span class="tl-when">2–8 semanas</span>
         <h3>Renovación del ciclo</h3>
-        <p>Es normal una caída temporal del cabello al inicio (“shedding”). Esto indica que el ciclo capilar se está renovando, haciendo que algunos cabellos en fase de reposo se caigan antes para dar paso a nuevos.</p>
+        <p><strong>Es normal una caída temporal del cabello al inicio</strong> (“shedding”). Esto indica que el ciclo capilar se está renovando, haciendo que algunos cabellos en fase de reposo se caigan antes para dar paso a nuevos.</p>
       </div>
       <div class="tl-item t2">
         <span class="tl-when">2–4 meses</span>
@@ -578,19 +612,23 @@
       <article class="tst-card">
         <div class="tst-stars">★★★★★</div>
         <p>“A los tres meses noté mucho menos caída y el cabello más lleno. La cápsula al día es súper práctica.”</p>
+        <small class="tst-translated">(traducido)</small>
         <div class="tst-who"><span class="av">A</span><div><b>Andrés M.</b><small>CDMX · 3 meses de uso</small></div></div>
       </article>
       <article class="tst-card">
         <div class="tst-stars">★★★★★</div>
         <p>“Empecé con el 1 MG por recomendación y me fue excelente. La atención por WhatsApp resolvió todas mis dudas.”</p>
+        <small class="tst-translated">(traducido)</small>
         <div class="tst-who"><span class="av">L</span><div><b>Laura G.</b><small>Guadalajara · 4 meses de uso</small></div></div>
       </article>
       <article class="tst-card">
         <div class="tst-stars">★★★★★</div>
         <p>“Buen precio y llegó rápido. Ya veo cabello nuevo en las entradas, muy contento con el resultado.”</p>
+        <small class="tst-translated">(traducido)</small>
         <div class="tst-who"><span class="av">J</span><div><b>Jorge R.</b><small>Monterrey · 5 meses de uso</small></div></div>
       </article>
     </div>
+    <p class="tst-recommend">Más de 1,000 clientes satisfechos nos recomiendan.</p>
   </section>
 
   <!-- TIRA DE CONFIANZA -->
@@ -781,6 +819,20 @@
     onScroll();
   })();
 
+  /* Menú hamburguesa (móvil) */
+  (function(){
+    var btn = document.getElementById('navToggle');
+    var menu = document.getElementById('mobileNav');
+    if(!btn || !menu) return;
+    function setOpen(open){
+      menu.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    }
+    btn.addEventListener('click', function(){ setOpen(!menu.classList.contains('open')); });
+    menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setOpen(false); }); });
+  })();
+
   /* ====================== CARRITO ====================== */
   (function(){
     var WA_NUMBER = "523317389938";
@@ -903,7 +955,8 @@ window.I18N_MAP = {
   "Tomando una cápsula al día, con uso constante. El avance es gradual y natural.":"Taking one capsule a day, with consistent use. Progress is gradual and natural.",
   "2–8 semanas":"2–8 weeks",
   "Renovación del ciclo":"Cycle renewal",
-  "Es normal una caída temporal del cabello al inicio (“shedding”). Esto indica que el ciclo capilar se está renovando, haciendo que algunos cabellos en fase de reposo se caigan antes para dar paso a nuevos.":"A temporary increase in shedding at the start is normal. It means the hair cycle is renewing, causing some resting hairs to fall out sooner to make way for new ones.",
+  "Es normal una caída temporal del cabello al inicio":"A temporary increase in shedding at the start is normal.",
+  "(“shedding”). Esto indica que el ciclo capilar se está renovando, haciendo que algunos cabellos en fase de reposo se caigan antes para dar paso a nuevos.":"It means the hair cycle is renewing, causing some resting hairs to fall out sooner to make way for new ones.",
   "2–4 meses":"2–4 months",
   "Más grueso y denso":"Thicker and denser",
   "Comienzan a crecer nuevos cabellos y el cabello existente luce más grueso y con mayor densidad.":"New hairs begin to grow and existing hair looks thicker and denser.",
@@ -939,6 +992,8 @@ window.I18N_MAP = {
   "Guadalajara · 4 meses de uso":"Guadalajara · 4 months of use",
   "“Buen precio y llegó rápido. Ya veo cabello nuevo en las entradas, muy contento con el resultado.”":"“Great price and fast delivery. I already see new hair at the temples—very happy with the result.”",
   "Monterrey · 5 meses de uso":"Monterrey · 5 months of use",
+  "(traducido)":"(translated)",
+  "Más de 1,000 clientes satisfechos nos recomiendan.":"Over 1,000 satisfied customers recommend us.",
   "Enviamos con:":"We ship with:",
   "Preguntas frecuentes":"Frequently asked questions",
   "Lo que más nos preguntan":"Your top questions",
