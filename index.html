@@ -100,9 +100,8 @@
     background:#d3d5d7 url("assets/hero-desktop.png") center 78%/cover no-repeat;
     transform-origin:50% 50%;will-change:filter,opacity,transform}
   @media (max-width:760px){
-    .hero-bg{background-image:url("assets/hero-bottles2.png");background-position:center 74%}
+    .hero-bg{background-image:url("assets/hero-mobile.png");background-position:center 74%}
   }
-  .hero-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;background:rgba(12,22,28,.40)}
   .hero > .wrap{width:100%}
   .hero-inner{position:relative;z-index:2;width:min(740px,100%);color:#fff}
 
@@ -142,6 +141,10 @@
     justify-content:center;font-weight:700;font-size:.92rem;color:var(--ink-2)}
   .trust li{display:flex;align-items:center;gap:.5rem}
   .trust .dot{width:7px;height:7px;border-radius:50%;background:var(--violet)}
+  .trust ul{padding-bottom:.4rem}
+  .trust-cofepris{display:flex;align-items:center;justify-content:center;gap:.6rem;padding-bottom:1.1rem}
+  .trust-cofepris img{height:42px;width:auto}
+  .trust-cofepris span{font-weight:800;font-size:.82rem;color:var(--ink-2);letter-spacing:.02em}
 
   /* ====================== SECCIONES ====================== */
   section.pad{padding-block:clamp(32px,4.5vw,58px)}
@@ -416,7 +419,6 @@
   <!-- HERO -->
   <section class="hero" id="hero">
     <div class="hero-bg" id="heroBg"></div>
-    <div class="hero-scrim"></div>
     <div class="wrap">
       <div class="hero-inner">
         <span class="kicker">Minoxidil + Vitamina D3 · <b>Vía oral</b></span>
@@ -428,7 +430,6 @@
         </div>
         <div class="hero-cta">
           <a class="btn btn-primary" href="#presentaciones">Comienza ahora</a>
-          <a class="btn btn-light" href="#formula">Cómo funciona</a>
         </div>
         <p class="hero-price"><span class="from">Desde</span><b>$375</b><span class="per">pesos al mes</span></p>
       </div>
@@ -442,6 +443,10 @@
         <li><span class="dot"></span>Hecho en México</li>
         <li><span class="dot"></span>Fórmula magistral</li>
       </ul>
+      <div class="trust-cofepris">
+        <img src="assets/cofepris.png" alt="COFEPRIS" loading="lazy">
+        <span>Regulado por COFEPRIS</span>
+      </div>
     </div>
   </div>
 
