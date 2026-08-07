@@ -366,12 +366,12 @@
    Mientras estos campos estén vacíos, la tienda corre en modo DEMO.
    ================================================================= */
 const SHOPIFY = {
-  DOMAIN: "jelabpharma.myshopify.com",
-  STOREFRONT_TOKEN: "8df67e718271d43531b1da555fea03db",   // token PÚBLICO de Storefront API (seguro en el front)
+  DOMAIN: "1ir1gk-xj.myshopify.com",
+  STOREFRONT_TOKEN: "e7d1cfbe46452883fd73502420d02311",   // token PÚBLICO de Storefront API (seguro en el front)
   API_VERSION: "2024-10",
   variants: {
-    min5: "gid://shopify/ProductVariant/44546426667074",
-    min1: "gid://shopify/ProductVariant/44546434269250"
+    min5: "gid://shopify/ProductVariant/51441883578614",
+    min1: "gid://shopify/ProductVariant/51441883545846"
   }
 };
 const SUBSCRIPTIONS_ENABLED = false;   // ponlo en true cuando Appstle tenga planes de suscripción en los productos
@@ -381,9 +381,9 @@ const DEMO = !SHOPIFY.DOMAIN || !SHOPIFY.STOREFRONT_TOKEN;
    *** PRECIOS DE EJEMPLO — reemplazar por los reales *** */
 const PRODUCTS = {
   min5: { id:"min5", cls:"alta",    tag:"Concentración alta",    title:"Minoxidil 5 MG",
-          dose:"+ Vitamina D3 2000 UI · 60 cápsulas", price:850, img:"assets/img04.png" },
+          dose:"+ Vitamina D3 2000 UI · 60 cápsulas", price:849, img:"assets/img04.png" },
   min1: { id:"min1", cls:"inicial", tag:"Concentración inicial", title:"Minoxidil 1 MG",
-          dose:"+ Vitamina D3 2000 UI · 60 cápsulas", price:750, img:"assets/img06.png" }
+          dose:"+ Vitamina D3 2000 UI · 60 cápsulas", price:749, img:"assets/img06.png" }
 };
 const SUB_DISCOUNT = 0.10;   // suscripción: -10%
 const FREE_SHIP_MIN = 999;   // envío gratis en compras desde este monto (MXN)
