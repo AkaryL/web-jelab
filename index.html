@@ -224,6 +224,25 @@
   .results-card img{width:100%;height:auto}
   .results-note{text-align:center;color:var(--ink-2);font-size:.85rem;margin-top:1rem;font-style:italic}
 
+  /* carrusel antes / después */
+  .ba-carousel{position:relative;max-width:920px;margin:0 auto;border-radius:22px;overflow:hidden;
+    box-shadow:var(--shadow);background:radial-gradient(130% 130% at 50% 42%, #04203a 0%, #01101f 100%)}
+  .ba-track{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1);will-change:transform}
+  .ba-slide{min-width:100%;aspect-ratio:16/9;display:grid;place-items:center}
+  .ba-slide img{width:100%;height:100%;object-fit:contain}
+  .ba-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:44px;height:44px;
+    border:none;border-radius:50%;background:rgba(255,255,255,.9);color:#01101f;cursor:pointer;
+    display:grid;place-items:center;box-shadow:0 6px 18px -4px rgba(0,0,0,.4);
+    transition:background .15s ease,transform .15s ease}
+  .ba-arrow:hover{background:#fff;transform:translateY(-50%) scale(1.06)}
+  .ba-arrow svg{width:22px;height:22px}
+  .ba-arrow.prev{left:12px}.ba-arrow.next{right:12px}
+  @media (max-width:520px){.ba-arrow{width:38px;height:38px}.ba-arrow svg{width:19px;height:19px}}
+  .ba-dots{display:flex;gap:.5rem;justify-content:center;margin-top:1rem}
+  .ba-dot{width:9px;height:9px;padding:0;border:none;border-radius:50%;background:var(--line);
+    cursor:pointer;transition:background .15s ease,transform .15s ease}
+  .ba-dot.active{background:var(--violet);transform:scale(1.3)}
+
   /* testimonios */
   .tst{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2.5vw,22px)}
   @media (max-width:820px){.tst{grid-template-columns:1fr}}
@@ -251,7 +270,7 @@
   .confia .carrier{width:auto;height:auto;opacity:.92;transition:opacity .2s ease}
   .confia .carrier:hover{opacity:1}
   .confia .carrier.fedex{max-height:24px;max-width:66px}
-  .confia .carrier.dhl{max-height:15px;max-width:78px}
+  .confia .carrier.dhl{max-height:28px;max-width:48px}
   .confia .carrier.estafeta{max-height:16px;max-width:82px}
   .confia .carrier.cofepris{max-height:36px;opacity:.95}
   .confia .sep{width:1px;height:26px;background:var(--line)}
@@ -605,9 +624,22 @@
       <h2>Mejora visible con uso constante</h2>
       <p>Fotografías de seguimiento tras 3 meses de tratamiento con Minoxidil.</p>
     </div>
-    <div class="results-card reveal">
-      <img src="assets/img07.jpg" alt="Antes y después: mejora del cabello tras 3 meses de Minoxidil" width="1536" height="1024" loading="lazy">
+    <div class="ba-carousel reveal" id="baCarousel" aria-roledescription="carrusel" aria-label="Antes y después">
+      <div class="ba-track" id="baTrack">
+        <div class="ba-slide"><img src="assets/ba-1.jpg" alt="Antes y después tras 3 meses de tratamiento — caso 1" loading="lazy"></div>
+        <div class="ba-slide"><img src="assets/ba-2.jpg" alt="Antes y después tras 3 meses de tratamiento — caso 2" loading="lazy"></div>
+        <div class="ba-slide"><img src="assets/ba-3.jpg" alt="Antes y después tras 3 meses de tratamiento — caso 3" loading="lazy"></div>
+        <div class="ba-slide"><img src="assets/ba-4.jpg" alt="Antes y después tras 3 meses de tratamiento — caso 4" loading="lazy"></div>
+        <div class="ba-slide"><img src="assets/ba-5.jpg" alt="Antes y después tras 3 meses de tratamiento — caso 5" loading="lazy"></div>
+      </div>
+      <button class="ba-arrow prev" id="baPrev" type="button" aria-label="Anterior">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="ba-arrow next" id="baNext" type="button" aria-label="Siguiente">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
     </div>
+    <div class="ba-dots" id="baDots" aria-label="Elegir imagen"></div>
     <p class="results-note">Los resultados pueden variar de persona a persona.</p>
   </section>
 
@@ -833,6 +865,46 @@
     }
     btn.addEventListener('click', function(){ setOpen(!menu.classList.contains('open')); });
     menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setOpen(false); }); });
+  })();
+
+  /* Carrusel antes / después */
+  (function(){
+    var track=document.getElementById('baTrack');
+    if(!track) return;
+    var n=track.children.length;
+    var dotsBox=document.getElementById('baDots');
+    var car=document.getElementById('baCarousel');
+    var i=0, timer=null;
+    for(var d=0; d<n; d++){ (function(d){
+      var b=document.createElement('button');
+      b.className='ba-dot'+(d===0?' active':'');
+      b.type='button'; b.setAttribute('aria-label','Imagen '+(d+1));
+      b.addEventListener('click', function(){ go(d); reset(); });
+      dotsBox.appendChild(b);
+    })(d); }
+    var dots=dotsBox.children;
+    function go(k){
+      i=(k+n)%n;
+      track.style.transform='translateX(-'+(i*100)+'%)';
+      for(var j=0;j<n;j++) dots[j].classList.toggle('active', j===i);
+    }
+    function next(){ go(i+1); }
+    function prev(){ go(i-1); }
+    function play(){ timer=setInterval(next, 4500); }
+    function reset(){ if(timer) clearInterval(timer); play(); }
+    document.getElementById('baNext').addEventListener('click', function(){ next(); reset(); });
+    document.getElementById('baPrev').addEventListener('click', function(){ prev(); reset(); });
+    car.addEventListener('mouseenter', function(){ if(timer) clearInterval(timer); });
+    car.addEventListener('mouseleave', reset);
+    var x0=null;
+    car.addEventListener('touchstart', function(e){ x0=e.touches[0].clientX; }, {passive:true});
+    car.addEventListener('touchend', function(e){
+      if(x0===null) return;
+      var dx=e.changedTouches[0].clientX - x0;
+      if(Math.abs(dx)>40){ if(dx<0) next(); else prev(); reset(); }
+      x0=null;
+    }, {passive:true});
+    play();
   })();
 
   /* ====================== CARRITO — movido a tienda.html ====================== */
