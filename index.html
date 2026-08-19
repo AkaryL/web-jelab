@@ -964,8 +964,6 @@
     function reset(){ if(timer) clearInterval(timer); play(); }
     document.getElementById('baNext').addEventListener('click', function(){ next(); reset(); });
     document.getElementById('baPrev').addEventListener('click', function(){ prev(); reset(); });
-    car.addEventListener('mouseenter', function(){ if(timer) clearInterval(timer); });
-    car.addEventListener('mouseleave', reset);
     var x0=null;
     car.addEventListener('touchstart', function(e){ x0=e.touches[0].clientX; }, {passive:true});
     car.addEventListener('touchend', function(e){
