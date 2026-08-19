@@ -278,7 +278,13 @@
   .plan .price .big{font-family:var(--display);font-weight:900;font-size:clamp(1.5rem,3vw,1.8rem)}
   .plan .price .per{font-size:.85rem;color:var(--ink-2)}
   .plan .add-cart{width:100%;justify-content:center}
-  .note-price{text-align:center;margin-top:1.4rem;font-size:.82rem;color:var(--ink-2)}
+  .note-price{text-align:center;margin-top:.6rem;font-size:.82rem;color:var(--ink-2)}
+  .free-ship{display:flex;align-items:center;gap:.6rem;width:max-content;max-width:100%;
+    margin:1.6rem auto 0;padding:.7rem 1.4rem;border-radius:999px;
+    background:color-mix(in srgb,var(--ok) 12%,transparent);
+    border:1.6px solid color-mix(in srgb,var(--ok) 34%,transparent);
+    color:var(--ok);font-weight:800;font-size:clamp(1.1rem,3vw,1.55rem);text-align:center;line-height:1.15}
+  .free-ship svg{width:clamp(24px,4vw,30px);height:clamp(24px,4vw,30px);flex:0 0 auto}
 
   /* resultados */
   .results-card{max-width:920px;margin:0 auto;border-radius:22px;overflow:hidden;
@@ -675,7 +681,11 @@
         </div>
       </article>
     </div>
-    <p class="note-price">Envío gratis en compras desde $999. Precios en pesos mexicanos (MXN).</p>
+    <div class="free-ship">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      <span>Envío GRATIS en compras desde $999</span>
+    </div>
+    <p class="note-price">Precios en pesos mexicanos (MXN).</p>
   </section>
 
   <!-- RESULTADOS -->
@@ -1115,7 +1125,8 @@ window.I18N_MAP = {
   "Ideal para personas con mayor sensibilidad al minoxidil":"Ideal for people more sensitive to minoxidil",
   "(RECOMENDADO EN MUJERES)":"(RECOMMENDED FOR WOMEN)",
   "Fortalece y mejora la densidad progresivamente":"Strengthens and improves density progressively",
-  "Envío gratis en compras desde $999. Precios en pesos mexicanos (MXN).":"Free shipping on orders from $999. Prices in Mexican pesos (MXN).",
+  "Envío GRATIS en compras desde $999":"FREE shipping on orders from $999",
+  "Precios en pesos mexicanos (MXN).":"Prices in Mexican pesos (MXN).",
   "Resultados reales":"Real results",
   "Mejora visible con uso constante":"Visible improvement with consistent use",
   "Fotografías de seguimiento tras 3 meses de tratamiento con Minoxidil.":"Follow-up photos after 3 months of treatment with Minoxidil.",
