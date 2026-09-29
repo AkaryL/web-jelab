@@ -119,6 +119,9 @@ src="https://www.facebook.com/tr?id=4634208460238734&ev=PageView&noscript=1"/></
   .card .tag{display:inline-block;font-weight:800;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;
     padding:.26rem .55rem;border-radius:999px;margin-bottom:.5rem;color:#fff}
   .card.alta .tag{background:var(--violet)}.card.inicial .tag{background:var(--magenta)}
+  .card.doble{grid-column:1 / -1}
+  .card.doble .pic{background:var(--tint-m)}
+  .card.doble .tag{background:var(--magenta)}
   .card h3{font-family:var(--sans);font-weight:900;font-size:1.25rem}
   .card .dose{color:var(--ink-2);font-size:.88rem;margin-top:.15rem}
   .card .price{display:flex;align-items:baseline;gap:.4rem;margin-top:.7rem}
@@ -392,7 +395,8 @@ const SHOPIFY = {
   API_VERSION: "2024-10",
   variants: {
     min5: "gid://shopify/ProductVariant/51441883578614",
-    min1: "gid://shopify/ProductVariant/51441883545846"
+    min1: "gid://shopify/ProductVariant/51441883545846",
+    duta: "gid://shopify/ProductVariant/51733282521334"
   }
 };
 const SUBSCRIPTIONS_ENABLED = false;   // ponlo en true cuando Appstle tenga planes de suscripción en los productos
@@ -404,7 +408,9 @@ const PRODUCTS = {
   min5: { id:"min5", cls:"alta",    tag:"Concentración alta",    title:"Minoxidil 5 MG",
           dose:"+ Vitamina D3 2000 UI · 60 cápsulas", price:849, img:"assets/img04.png" },
   min1: { id:"min1", cls:"inicial", tag:"Concentración inicial", title:"Minoxidil 1 MG",
-          dose:"+ Vitamina D3 2000 UI · 60 cápsulas", price:749, img:"assets/img06.png" }
+          dose:"+ Vitamina D3 2000 UI · 60 cápsulas", price:749, img:"assets/img06.png" },
+  duta: { id:"duta", cls:"doble", tag:"Doble acción", title:"Minoxidil + Dutasterida",
+          dose:"5 MG + 0.5 MG · 90 cápsulas", price:1500, img:"assets/dutasterida.png" }
 };
 const SUB_DISCOUNT = 0.10;   // suscripción: -10%
 const FREE_SHIP_MIN = 999;   // envío gratis en compras desde este monto (MXN)

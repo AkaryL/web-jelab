@@ -82,6 +82,15 @@ src="https://www.facebook.com/tr?id=4634208460238734&ev=PageView&noscript=1"/></
       "brand":{"@type":"Brand","name":"JELAB Pharma"},
       "category":"Tratamiento capilar",
       "offers":{"@type":"Offer","price":"749","priceCurrency":"MXN","availability":"https://schema.org/InStock","url":"https://jelabpharma.com/tienda.html"}
+    },
+    {
+      "@type":"Product",
+      "name":"Minoxidil 5 MG + Dutasterida 0.5 MG — 90 cápsulas",
+      "image":"https://jelabpharma.com/assets/dutasterida.png",
+      "description":"Fórmula de doble acción: Minoxidil 5 mg estimula el crecimiento y Dutasterida 0.5 mg controla la causa hormonal (reduce DHT). Para caída de origen androgénico. 90 cápsulas.",
+      "brand":{"@type":"Brand","name":"JELAB Pharma"},
+      "category":"Tratamiento capilar",
+      "offers":{"@type":"Offer","price":"1500","priceCurrency":"MXN","availability":"https://schema.org/InStock","url":"https://jelabpharma.com/tienda.html"}
     }
   ]
 }
@@ -289,6 +298,12 @@ src="https://www.facebook.com/tr?id=4634208460238734&ev=PageView&noscript=1"/></
     -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z'/%3E%3C/svg%3E") center/contain no-repeat;
     mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z'/%3E%3C/svg%3E") center/contain no-repeat}
   .plan.inicial ul li::before{background:var(--plum)}
+  .plan.doble{grid-column:1 / -1}
+  .plan.doble:hover{border-color:var(--magenta)}
+  .plan.doble::before{background:linear-gradient(90deg,var(--violet),var(--magenta))}
+  .plan.doble .pic{background:radial-gradient(80% 70% at 50% 20%, var(--tint-m), transparent 75%), var(--bg-2)}
+  .plan.doble .tag{background:var(--magenta)}
+  .plan.doble ul li::before{background:var(--magenta)}
   .plan .price{display:flex;align-items:baseline;gap:.5rem;margin-bottom:.9rem;flex-wrap:wrap;justify-content:inherit}
   .plan .price .big{font-family:var(--display);font-weight:900;font-size:clamp(1.5rem,3vw,1.8rem)}
   .plan .price .per{font-size:.85rem;color:var(--ink-2)}
@@ -650,7 +665,7 @@ src="https://www.facebook.com/tr?id=4634208460238734&ev=PageView&noscript=1"/></
     <div class="sec-head reveal">
       <span class="eyebrow">Presentaciones</span>
       <h2>Elige tu concentración</h2>
-      <p>Dos fórmulas con la misma dosis de Vitamina D3. Tu médico te ayuda a elegir la ideal para ti.</p>
+      <p>Tres fórmulas para cada tipo de caída: dos concentraciones de minoxidil y nuestra fórmula de doble acción. Tu médico te ayuda a elegir.</p>
     </div>
     <div class="plans reveal">
       <article class="plan alta">
@@ -683,6 +698,21 @@ src="https://www.facebook.com/tr?id=4634208460238734&ev=PageView&noscript=1"/></
           </ul>
           <div class="price"><span class="big tnum">$749</span><span class="per">/ 60 cáps.</span></div>
           <a class="btn btn-primary add-cart" href="tienda.html?add=min1">Agregar al carrito</a>
+        </div>
+      </article>
+      <article class="plan doble">
+        <div class="pic"><img src="assets/dutasterida.png" alt="Minoxidil + Dutasterida de JELAB Pharma" width="928" height="1695" loading="lazy"></div>
+        <div>
+          <span class="tag">Doble acción</span>
+          <h3>Minoxidil + Dutasterida</h3>
+          <p class="dose">5 MG + 0.5 MG · 90 cápsulas</p>
+          <ul>
+            <li>Doble mecanismo: minoxidil estimula el crecimiento y dutasterida controla la causa hormonal (DHT)</li>
+            <li>Ideal para caída androgénica marcada o que no cede con minoxidil solo</li>
+            <li>1 cápsula al día · 3 meses de tratamiento</li>
+          </ul>
+          <div class="price"><span class="big tnum">$1,500</span><span class="per">/ 90 cáps.</span></div>
+          <a class="btn btn-primary add-cart" href="tienda.html?add=duta">Agregar al carrito</a>
         </div>
       </article>
     </div>
@@ -1092,6 +1122,14 @@ window.I18N_MAP = {
   "Prolonga la fase de crecimiento (anágena) del folículo piloso.":"Extends the growth (anagen) phase of the hair follicle.",
   "Mejora la densidad y el grosor del cabello.":"Improves hair density and thickness.",
   "Ideal para tratar la caída capilar de origen androgenético.":"Ideal for treating androgenetic hair loss.",
+  "Tres fórmulas para cada tipo de caída: dos concentraciones de minoxidil y nuestra fórmula de doble acción. Tu médico te ayuda a elegir.":"Three formulas for every type of hair loss: two minoxidil strengths and our dual-action formula. Your doctor helps you choose.",
+  "Doble acción":"Dual action",
+  "Minoxidil + Dutasterida":"Minoxidil + Dutasteride",
+  "5 MG + 0.5 MG · 90 cápsulas":"5 MG + 0.5 MG · 90 capsules",
+  "Doble mecanismo: minoxidil estimula el crecimiento y dutasterida controla la causa hormonal (DHT)":"Dual mechanism: minoxidil stimulates growth and dutasteride controls the hormonal cause (DHT)",
+  "Ideal para caída androgénica marcada o que no cede con minoxidil solo":"Ideal for marked androgenetic hair loss or when minoxidil alone isn't enough",
+  "1 cápsula al día · 3 meses de tratamiento":"1 capsule a day · 3 months of treatment",
+  "/ 90 cáps.":"/ 90 caps.",
   "Favorece el ciclo de crecimiento del cabello.":"Supports the hair growth cycle.",
   "Fortalece los folículos y mejora su funcionamiento.":"Strengthens follicles and improves their function.",
   "Ayuda a reducir la caída asociada a deficiencia de vitamina D.":"Helps reduce shedding linked to vitamin D deficiency.",
