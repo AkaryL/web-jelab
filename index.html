@@ -373,7 +373,7 @@ src="https://www.facebook.com/tr?id=4634208460238734&ev=PageView&noscript=1"/></
   .confia .sep{width:1px;height:26px;background:var(--line)}
 
   /* cómo actúa — activos (estilo flyer) */
-  .actives{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3vw,26px)}
+  .actives{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(18px,3vw,26px)}
   @media (max-width:760px){.actives{grid-template-columns:1fr}}
   .active{background:var(--surface);border:1px solid var(--line);border-radius:22px;
     padding:1.7rem 1.6rem;box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
@@ -383,6 +383,9 @@ src="https://www.facebook.com/tr?id=4634208460238734&ev=PageView&noscript=1"/></
   .active-head .ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;flex:0 0 auto;
     background:var(--tint-v);color:var(--violet)}
   .active.d3 .active-head .ic{background:var(--plum-tint);color:var(--plum)}
+  .active.duta::before{background:var(--magenta)}
+  .active.duta .active-head .ic{background:var(--tint-m);color:var(--magenta)}
+  .active.duta ul li::before{background:var(--magenta)}
   .active-head h3{font-family:var(--sans);font-weight:900;font-size:1.2rem;line-height:1.12}
   .active-head .tag{display:block;font-size:.72rem;font-weight:800;letter-spacing:.06em;
     text-transform:uppercase;color:var(--ink-2);margin-top:.15rem}
@@ -598,7 +601,7 @@ src="https://www.facebook.com/tr?id=4634208460238734&ev=PageView&noscript=1"/></
   <section class="pad wrap" id="formula">
     <div class="sec-head reveal">
       <span class="eyebrow">Cómo actúa la fórmula</span>
-      <h2>Doble acción: Minoxidil + Vitamina D3</h2>
+      <h2>Minoxidil, Vitamina D3 y Dutasterida</h2>
       <p>Una fórmula avanzada para el cuidado capilar que trabaja desde el interior.</p>
     </div>
     <div class="actives reveal">
@@ -624,6 +627,18 @@ src="https://www.facebook.com/tr?id=4634208460238734&ev=PageView&noscript=1"/></
           <li>Fortalece los folículos y mejora su funcionamiento.</li>
           <li>Ayuda a reducir la caída asociada a deficiencia de vitamina D.</li>
           <li>Contribuye a un cabello más fuerte, saludable y resistente.</li>
+        </ul>
+      </article>
+      <article class="active duta">
+        <div class="active-head">
+          <span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 20 7v10l-8 4.5L4 17V7z"/><path d="M12 8v5M9.5 10.5h5"/></svg></span>
+          <div><h3>Dutasterida 0.5 mg</h3><span class="tag">Control hormonal</span></div>
+        </div>
+        <ul>
+          <li>Inhibe las enzimas 5-alfa-reductasa tipo I y II.</li>
+          <li>Reduce los niveles de DHT (dihidrotestosterona).</li>
+          <li>Ayuda a frenar la miniaturización del folículo.</li>
+          <li>Complementa la acción del minoxidil para mejores resultados.</li>
         </ul>
       </article>
     </div>
@@ -1117,6 +1132,13 @@ window.I18N_MAP = {
   "Una fórmula avanzada para el cuidado capilar que trabaja desde el interior.":"An advanced hair-care formula that works from within.",
   "Vía oral · Activo principal":"Oral · Main active",
   "Vitamina D3 2000 UI":"Vitamin D3 2000 IU",
+  "Minoxidil, Vitamina D3 y Dutasterida":"Minoxidil, Vitamin D3 and Dutasteride",
+  "Dutasterida 0.5 mg":"Dutasteride 0.5 mg",
+  "Control hormonal":"Hormonal control",
+  "Inhibe las enzimas 5-alfa-reductasa tipo I y II.":"Inhibits 5-alpha-reductase enzymes types I and II.",
+  "Reduce los niveles de DHT (dihidrotestosterona).":"Reduces DHT (dihydrotestosterone) levels.",
+  "Ayuda a frenar la miniaturización del folículo.":"Helps slow follicle miniaturization.",
+  "Complementa la acción del minoxidil para mejores resultados.":"Complements minoxidil's action for better results.",
   "Complemento sinérgico":"Synergistic complement",
   "Estimula el crecimiento del cabello desde el interior.":"Stimulates hair growth from within.",
   "Prolonga la fase de crecimiento (anágena) del folículo piloso.":"Extends the growth (anagen) phase of the hair follicle.",
