@@ -405,9 +405,9 @@ const DEMO = !SHOPIFY.DOMAIN || !SHOPIFY.STOREFRONT_TOKEN;
 /* Catálogo. En producción esto lo trae la Storefront API; por ahora es mock.
    *** PRECIOS DE EJEMPLO — reemplazar por los reales *** */
 const PRODUCTS = {
-  min5: { id:"min5", cls:"alta",    tag:"Concentración alta",    title:"Minoxidil 5 MG",
+  min5: { id:"min5", cls:"alta",    tag:"",    title:"Minoxidil 5 MG",
           dose:"+ Vitamina D3 2000 UI · 60 cápsulas", price:849, img:"assets/img04.png" },
-  min1: { id:"min1", cls:"inicial", tag:"Concentración inicial", title:"Minoxidil 1 MG",
+  min1: { id:"min1", cls:"inicial", tag:"", title:"Minoxidil 1 MG",
           dose:"+ Vitamina D3 2000 UI · 60 cápsulas", price:749, img:"assets/img06.png" },
   duta: { id:"duta", cls:"doble", tag:"Doble acción", title:"Minoxidil + Dutasterida",
           dose:"5 MG + 0.5 MG · 90 cápsulas", price:1490, img:"assets/dutasterida.png" }
@@ -503,7 +503,7 @@ const Store = {
         <div class="top">
           <div class="pic"><img src="${p.img}" alt="${p.title} de JELAB Pharma"></div>
           <div>
-            <span class="tag">${p.tag}</span>
+            ${p.tag ? '<span class="tag">'+p.tag+'</span>' : ''}
             <h3>${p.title}</h3>
             <p class="dose">${p.dose}</p>
             <div class="price"><span class="big tnum">${money(p.price)}</span><span class="per">/ 60 cáps.</span></div>
